@@ -4,9 +4,9 @@ VCFtools - 0.1.16
 
 Parameters as interpreted:
 	--vcf OUTPUTS_BATCH1-9_perChrom_vcf_20230310_genotypes.FINAL.chr1.vcf
-	--out chr1_iisnp_forenseq
+	--out chr1.1_iisnp_forenseq
 	--recode
-	--snps iisnp_list
+	--snps iisnps_list
 
 Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another; will always be heterozygous and is not intended to describe called alleles">
 Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
@@ -70,4 +70,5 @@ Warning: Expected at least 2 parts in INFO entry: ID=SAS_AF,Number=A,Type=Float,
 Warning: Expected at least 2 parts in INFO entry: ID=SAS_AF,Number=A,Type=Float,Description="Allele frequency in the SAS populations calculated from AC and AN, in the range (0,1)">
 After filtering, kept 248 out of 248 Individuals
 Outputting VCF file...
-Error: Could not open SNPs to Keep fileiisnp_list
+After filtering, kept 1 out of a possible 1608924 Sites
+Run Time = 68.00 seconds

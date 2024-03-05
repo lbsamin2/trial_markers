@@ -1,0 +1,777 @@
+##fileformat=VCFv4.2
+##ALT=<ID=NON_REF,Description="Represents any possible alternative allele not already represented at this location by REF and ALT">
+##FILTER=<ID=ExcessHet,Description="ExcessHet > 54.69">
+##FILTER=<ID=LowQual,Description="Low quality">
+##FILTER=<ID=PASS,Description="All filters passed">
+##FILTER=<ID=PASS,Description="Site contains at least one allele that passes filters">
+##FILTER=<ID=VQSRTrancheINDEL99.90to99.95,Description="Truth sensitivity tranche level for INDEL model at VQS Lod: -4.1876 <= x < -2.635">
+##FILTER=<ID=VQSRTrancheINDEL99.95to100.00+,Description="Truth sensitivity tranche level for INDEL model at VQS Lod < -130829.6322">
+##FILTER=<ID=VQSRTrancheINDEL99.95to100.00,Description="Truth sensitivity tranche level for INDEL model at VQS Lod: -130829.6322 <= x < -4.1876">
+##FILTER=<ID=VQSRTrancheSNP99.80to99.90,Description="Truth sensitivity tranche level for SNP model at VQS Lod: -26.9801 <= x < -19.4088">
+##FILTER=<ID=VQSRTrancheSNP99.90to99.95,Description="Truth sensitivity tranche level for SNP model at VQS Lod: -44.4986 <= x < -26.9801">
+##FILTER=<ID=VQSRTrancheSNP99.95to100.00+,Description="Truth sensitivity tranche level for SNP model at VQS Lod < -927750.034">
+##FILTER=<ID=VQSRTrancheSNP99.95to100.00,Description="Truth sensitivity tranche level for SNP model at VQS Lod: -927750.034 <= x < -44.4986">
+##FORMAT=<ID=AD,Number=R,Type=Integer,Description="Allelic depths for the ref and alt alleles in the order listed">
+##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Approximate read depth (reads with MQ=255 or with bad mates are filtered)">
+##FORMAT=<ID=GQ,Number=1,Type=Integer,Description="Genotype Quality">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=MIN_DP,Number=1,Type=Integer,Description="Minimum DP observed within the GVCF block">
+##FORMAT=<ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another; will always be heterozygous and is not intended to describe called alleles">
+##FORMAT=<ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+##FORMAT=<ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+##FORMAT=<ID=PS,Number=1,Type=Integer,Description="Phasing set (typically the position of the first variant in the set)">
+##FORMAT=<ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+##FORMAT=<ID=SB,Number=4,Type=Integer,Description="Per-sample component statistics which comprise the Fisher's Exact Test to detect strand bias.">
+##GATKCommandLine=<ID=ApplyVQSR,CommandLine="ApplyVQSR --recal-file /home/projects/cfb/cs_nsri_filipinome/genotypes_batch9/vqsr/20230310_genotypes.indels.recal --tranches-file 20230310_genotypes.indels.tranches --output 20230310_genotypes.recal.indel.vcf.gz --truth-sensitivity-filter-level 99.7 --mode INDEL --variant 20230310_genotypes.excesshet.renamed.vcf.gz --create-output-variant-index true --use-allele-specific-annotations false --ignore-all-filters false --exclude-filtered false --interval-set-rule UNION --interval-padding 0 --interval-exclusion-padding 0 --interval-merging-rule ALL --read-validation-stringency SILENT --seconds-between-progress-updates 10.0 --disable-sequence-dictionary-validation false --create-output-bam-index true --create-output-bam-md5 false --create-output-variant-md5 false --max-variants-per-shard 0 --lenient false --add-output-sam-program-record true --add-output-vcf-command-line true --cloud-prefetch-buffer 40 --cloud-index-prefetch-buffer -1 --disable-bam-index-caching false --sites-only-vcf-output false --help false --version false --showHidden false --verbosity INFO --QUIET false --use-jdk-deflater false --use-jdk-inflater false --gcs-max-retries 20 --gcs-project-for-requester-pays  --disable-tool-default-read-filters false",Version="4.2.6.1",Date="May 5, 2023 7:00:28 AM UTC">
+##GATKCommandLine=<ID=ApplyVQSR,CommandLine="ApplyVQSR --recal-file /home/projects/cfb/cs_nsri_filipinome/genotypes_batch9/vqsr/20230310_genotypes.snps.recal --tranches-file 20230310_genotypes.snps.tranches --output 20230310_genotypes.recal.snp.vcf.gz --truth-sensitivity-filter-level 99.7 --mode SNP --variant 20230310_genotypes.recal.indel.vcf.gz --create-output-variant-index true --use-allele-specific-annotations false --ignore-all-filters false --exclude-filtered false --interval-set-rule UNION --interval-padding 0 --interval-exclusion-padding 0 --interval-merging-rule ALL --read-validation-stringency SILENT --seconds-between-progress-updates 10.0 --disable-sequence-dictionary-validation false --create-output-bam-index true --create-output-bam-md5 false --create-output-variant-md5 false --max-variants-per-shard 0 --lenient false --add-output-sam-program-record true --add-output-vcf-command-line true --cloud-prefetch-buffer 40 --cloud-index-prefetch-buffer -1 --disable-bam-index-caching false --sites-only-vcf-output false --help false --version false --showHidden false --verbosity INFO --QUIET false --use-jdk-deflater false --use-jdk-inflater false --gcs-max-retries 20 --gcs-project-for-requester-pays  --disable-tool-default-read-filters false",Version="4.2.6.1",Date="May 5, 2023 7:32:52 AM UTC">
+##GATKCommandLine=<ID=GenomicsDBImport,CommandLine="GenomicsDBImport --genomicsdb-workspace-path /home/cfb/cs_nsri_filipinome/genomicsdb --variant 6454/06-6454.g.vcf.gz --genomicsdb-shared-posixfs-optimizations true --intervals NC_000001.11 --intervals NC_000002.12 --intervals NC_000003.12 --intervals NC_000004.12 --intervals NC_000005.10 --intervals NC_000006.12 --intervals NC_000007.14 --intervals NC_000008.11 --intervals NC_000009.12 --intervals NC_000010.11 --intervals NC_000011.10 --intervals NC_000012.12 --intervals NC_000013.11 --intervals NC_000014.9 --intervals NC_000015.10 --intervals NC_000016.10 --intervals NC_000017.11 --intervals NC_000018.10 --intervals NC_000019.10 --intervals NC_000020.11 --intervals NC_000021.9 --intervals NC_000022.11 --intervals NC_000023.11 --intervals NC_000024.10 --intervals NC_012920.1 --tmp-dir /tmp --genomicsdb-segment-size 1048576 --genomicsdb-vcf-buffer-size 16384 --overwrite-existing-genomicsdb-workspace false --batch-size 0 --consolidate false --validate-sample-name-map false --merge-input-intervals false --reader-threads 1 --max-num-intervals-to-import-in-parallel 1 --interval-set-rule UNION --interval-padding 0 --interval-exclusion-padding 0 --interval-merging-rule ALL --read-validation-stringency SILENT --seconds-between-progress-updates 10.0 --disable-sequence-dictionary-validation false --create-output-bam-index true --create-output-bam-md5 false --create-output-variant-index true --create-output-variant-md5 false --lenient false --add-output-sam-program-record true --add-output-vcf-command-line true --cloud-prefetch-buffer 0 --cloud-index-prefetch-buffer 0 --disable-bam-index-caching false --sites-only-vcf-output false --help false --version false --showHidden false --verbosity INFO --QUIET false --use-jdk-deflater false --use-jdk-inflater false --gcs-max-retries 20 --gcs-project-for-requester-pays  --disable-tool-default-read-filters false",Version="4.1.9.0-SNAPSHOT",Date="March 23, 2021 9:01:43 PM UTC">
+##GATKCommandLine=<ID=GenotypeGVCFs,CommandLine="GenotypeGVCFs --output 20230310_genotypes.vcf --variant gendb://genomicsdb --reference reference/GRCh38_latest_genomic.fna --create-output-variant-index true --tmp-dir /home/projects/cfb/cs_nsri_filipinome --include-non-variant-sites false --merge-input-intervals false --input-is-somatic false --tumor-lod-to-emit 3.5 --allele-fraction-error 0.001 --keep-combined-raw-annotations false --annotate-with-num-discovered-alleles false --heterozygosity 0.001 --indel-heterozygosity 1.25E-4 --heterozygosity-stdev 0.01 --standard-min-confidence-threshold-for-calling 30.0 --max-alternate-alleles 6 --max-genotype-count 1024 --sample-ploidy 2 --num-reference-samples-if-no-call 0 --genomicsdb-use-bcf-codec false --genomicsdb-shared-posixfs-optimizations false --only-output-calls-starting-in-intervals false --interval-set-rule UNION --interval-padding 0 --interval-exclusion-padding 0 --interval-merging-rule ALL --read-validation-stringency SILENT --seconds-between-progress-updates 10.0 --disable-sequence-dictionary-validation false --create-output-bam-index true --create-output-bam-md5 false --create-output-variant-md5 false --lenient false --add-output-sam-program-record true --add-output-vcf-command-line true --cloud-prefetch-buffer 40 --cloud-index-prefetch-buffer -1 --disable-bam-index-caching false --sites-only-vcf-output false --help false --version false --showHidden false --verbosity INFO --QUIET false --use-jdk-deflater false --use-jdk-inflater false --gcs-max-retries 20 --gcs-project-for-requester-pays  --disable-tool-default-read-filters false --disable-tool-default-annotations false --enable-all-annotations false --allow-old-rms-mapping-quality-annotation-data false",Version="4.1.9.0-SNAPSHOT",Date="March 10, 2023 9:26:12 AM UTC">
+##GATKCommandLine=<ID=HaplotypeCaller,CommandLine="HaplotypeCaller --emit-ref-confidence GVCF --output 6454/06-6454.g.vcf --input 6454/05-recal.6454.bam --reference /home/cfb/cs_nsri_filipinome/reference/GRCh38_latest_genomic.fna --annotate-with-num-discovered-alleles false --heterozygosity 0.001 --indel-heterozygosity 1.25E-4 --heterozygosity-stdev 0.01 --standard-min-confidence-threshold-for-calling 30.0 --max-alternate-alleles 6 --max-genotype-count 1024 --sample-ploidy 2 --num-reference-samples-if-no-call 0 --contamination-fraction-to-filter 0.0 --output-mode EMIT_VARIANTS_ONLY --all-site-pls false --gvcf-gq-bands 1 --gvcf-gq-bands 2 --gvcf-gq-bands 3 --gvcf-gq-bands 4 --gvcf-gq-bands 5 --gvcf-gq-bands 6 --gvcf-gq-bands 7 --gvcf-gq-bands 8 --gvcf-gq-bands 9 --gvcf-gq-bands 10 --gvcf-gq-bands 11 --gvcf-gq-bands 12 --gvcf-gq-bands 13 --gvcf-gq-bands 14 --gvcf-gq-bands 15 --gvcf-gq-bands 16 --gvcf-gq-bands 17 --gvcf-gq-bands 18 --gvcf-gq-bands 19 --gvcf-gq-bands 20 --gvcf-gq-bands 21 --gvcf-gq-bands 22 --gvcf-gq-bands 23 --gvcf-gq-bands 24 --gvcf-gq-bands 25 --gvcf-gq-bands 26 --gvcf-gq-bands 27 --gvcf-gq-bands 28 --gvcf-gq-bands 29 --gvcf-gq-bands 30 --gvcf-gq-bands 31 --gvcf-gq-bands 32 --gvcf-gq-bands 33 --gvcf-gq-bands 34 --gvcf-gq-bands 35 --gvcf-gq-bands 36 --gvcf-gq-bands 37 --gvcf-gq-bands 38 --gvcf-gq-bands 39 --gvcf-gq-bands 40 --gvcf-gq-bands 41 --gvcf-gq-bands 42 --gvcf-gq-bands 43 --gvcf-gq-bands 44 --gvcf-gq-bands 45 --gvcf-gq-bands 46 --gvcf-gq-bands 47 --gvcf-gq-bands 48 --gvcf-gq-bands 49 --gvcf-gq-bands 50 --gvcf-gq-bands 51 --gvcf-gq-bands 52 --gvcf-gq-bands 53 --gvcf-gq-bands 54 --gvcf-gq-bands 55 --gvcf-gq-bands 56 --gvcf-gq-bands 57 --gvcf-gq-bands 58 --gvcf-gq-bands 59 --gvcf-gq-bands 60 --gvcf-gq-bands 70 --gvcf-gq-bands 80 --gvcf-gq-bands 90 --gvcf-gq-bands 99 --floor-blocks false --indel-size-to-eliminate-in-ref-model 10 --disable-optimizations false --just-determine-active-regions false --dont-genotype false --do-not-run-physical-phasing false --do-not-correct-overlapping-quality false --use-filtered-reads-for-annotations false --adaptive-pruning false --do-not-recover-dangling-branches false --recover-dangling-heads false --kmer-size 10 --kmer-size 25 --dont-increase-kmer-sizes-for-cycles false --allow-non-unique-kmers-in-ref false --num-pruning-samples 1 --min-dangling-branch-length 4 --recover-all-dangling-branches false --max-num-haplotypes-in-population 128 --min-pruning 2 --adaptive-pruning-initial-error-rate 0.001 --pruning-lod-threshold 2.302585092994046 --pruning-seeding-lod-threshold 9.210340371976184 --max-unpruned-variants 100 --linked-de-bruijn-graph false --disable-artificial-haplotype-recovery false --debug-assembly false --debug-graph-transformations false --capture-assembly-failure-bam false --error-correction-log-odds -Infinity --error-correct-reads false --kmer-length-for-read-error-correction 25 --min-observations-for-kmer-to-be-solid 20 --base-quality-score-threshold 18 --pair-hmm-gap-continuation-penalty 10 --pair-hmm-implementation FASTEST_AVAILABLE --pcr-indel-model CONSERVATIVE --phred-scaled-global-read-mismapping-rate 45 --native-pair-hmm-threads 4 --native-pair-hmm-use-double-precision false --bam-writer-type CALLED_HAPLOTYPES --dont-use-soft-clipped-bases false --min-base-quality-score 10 --smith-waterman JAVA --max-mnp-distance 0 --force-call-filtered-alleles false --allele-informative-reads-overlap-margin 2 --min-assembly-region-size 50 --max-assembly-region-size 300 --active-probability-threshold 0.002 --max-prob-propagation-distance 50 --force-active false --assembly-region-padding 100 --padding-around-indels 75 --padding-around-snps 20 --padding-around-strs 75 --max-reads-per-alignment-start 50 --interval-set-rule UNION --interval-padding 0 --interval-exclusion-padding 0 --interval-merging-rule ALL --read-validation-stringency SILENT --seconds-between-progress-updates 10.0 --disable-sequence-dictionary-validation false --create-output-bam-index true --create-output-bam-md5 false --create-output-variant-index true --create-output-variant-md5 false --lenient false --add-output-sam-program-record true --add-output-vcf-command-line true --cloud-prefetch-buffer 40 --cloud-index-prefetch-buffer -1 --disable-bam-index-caching false --sites-only-vcf-output false --help false --version false --showHidden false --verbosity INFO --QUIET false --use-jdk-deflater false --use-jdk-inflater false --gcs-max-retries 20 --gcs-project-for-requester-pays  --disable-tool-default-read-filters false --minimum-mapping-quality 20 --disable-tool-default-annotations false --enable-all-annotations false --allow-old-rms-mapping-quality-annotation-data false",Version="4.1.9.0-SNAPSHOT",Date="February 11, 2021 8:22:43 PM UTC">
+##GATKCommandLine=<ID=VariantFiltration,CommandLine="VariantFiltration --output 20230310_genotypes.excesshet.vcf --filter-expression ExcessHet > 54.69 --filter-name ExcessHet --variant 20230310_genotypes.vcf --cluster-size 3 --cluster-window-size 0 --mask-extension 0 --mask-name Mask --filter-not-in-mask false --missing-values-evaluate-as-failing false --invalidate-previous-filters false --invert-filter-expression false --invert-genotype-filter-expression false --set-filtered-genotype-to-no-call false --apply-allele-specific-filters false --interval-set-rule UNION --interval-padding 0 --interval-exclusion-padding 0 --interval-merging-rule ALL --read-validation-stringency SILENT --seconds-between-progress-updates 10.0 --disable-sequence-dictionary-validation false --create-output-bam-index true --create-output-bam-md5 false --create-output-variant-index true --create-output-variant-md5 false --max-variants-per-shard 0 --lenient false --add-output-sam-program-record true --add-output-vcf-command-line true --cloud-prefetch-buffer 40 --cloud-index-prefetch-buffer -1 --disable-bam-index-caching false --sites-only-vcf-output false --help false --version false --showHidden false --verbosity INFO --QUIET false --use-jdk-deflater false --use-jdk-inflater false --gcs-max-retries 20 --gcs-project-for-requester-pays  --disable-tool-default-read-filters false",Version="4.2.6.1",Date="May 4, 2023 8:17:50 AM UTC">
+##INFO=<ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+##INFO=<ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+##INFO=<ID=AN,Number=1,Type=Integer,Description="Total number of alleles in called genotypes">
+##INFO=<ID=BaseQRankSum,Number=1,Type=Float,Description="Z-score from Wilcoxon rank sum test of Alt Vs. Ref base qualities">
+##INFO=<ID=DP,Number=1,Type=Integer,Description="Approximate read depth; some reads may have been filtered">
+##INFO=<ID=END,Number=1,Type=Integer,Description="Stop position of the interval">
+##INFO=<ID=ExcessHet,Number=1,Type=Float,Description="Phred-scaled p-value for exact test of excess heterozygosity">
+##INFO=<ID=FS,Number=1,Type=Float,Description="Phred-scaled p-value using Fisher's exact test to detect strand bias">
+##INFO=<ID=InbreedingCoeff,Number=1,Type=Float,Description="Inbreeding coefficient as estimated from the genotype likelihoods per-sample when compared against the Hardy-Weinberg expectation">
+##INFO=<ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+##INFO=<ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+##INFO=<ID=MQ,Number=1,Type=Float,Description="RMS Mapping Quality">
+##INFO=<ID=MQRankSum,Number=1,Type=Float,Description="Z-score From Wilcoxon rank sum test of Alt vs. Ref read mapping qualities">
+##INFO=<ID=NEGATIVE_TRAIN_SITE,Number=0,Type=Flag,Description="This variant was used to build the negative training set of bad variants">
+##INFO=<ID=POSITIVE_TRAIN_SITE,Number=0,Type=Flag,Description="This variant was used to build the positive training set of good variants">
+##INFO=<ID=QD,Number=1,Type=Float,Description="Variant Confidence/Quality by Depth">
+##INFO=<ID=RAW_MQandDP,Number=2,Type=Integer,Description="Raw data (sum of squared MQ and total depth) for improved RMS Mapping Quality calculation. Incompatible with deprecated RAW_MQ formulation.">
+##INFO=<ID=ReadPosRankSum,Number=1,Type=Float,Description="Z-score from Wilcoxon rank sum test of Alt vs. Ref read position bias">
+##INFO=<ID=SOR,Number=1,Type=Float,Description="Symmetric Odds Ratio of 2x2 contingency table to detect strand bias">
+##INFO=<ID=VQSLOD,Number=1,Type=Float,Description="Log odds of being a true variant versus being false under the trained gaussian mixture model">
+##INFO=<ID=culprit,Number=1,Type=String,Description="The annotation which was the worst performing in the Gaussian mixture model, likely the reason why the variant was filtered out">
+##bcftools_annotateCommand=annotate --rename-chrs ../../resources/rename_files/ncbi_chr_name_map.tsv -Oz -o 20230310_genotypes.excesshet.renamed.vcf.gz --threads 8 20230310_genotypes.excesshet.vcf; Date=Fri May  5 13:44:54 2023
+##bcftools_annotateVersion=1.9+htslib-1.9
+##contig=<ID=chr1,length=248956422>
+##contig=<ID=chr1_KI270706v1_random,length=175055>
+##contig=<ID=chr1_KI270707v1_random,length=32032>
+##contig=<ID=chr1_KI270708v1_random,length=127682>
+##contig=<ID=chr1_KI270709v1_random,length=66860>
+##contig=<ID=chr1_KI270710v1_random,length=40176>
+##contig=<ID=chr1_KI270711v1_random,length=42210>
+##contig=<ID=chr1_KI270712v1_random,length=176043>
+##contig=<ID=chr1_KI270713v1_random,length=40745>
+##contig=<ID=chr1_KI270714v1_random,length=41717>
+##contig=<ID=chr2,length=242193529>
+##contig=<ID=chr2_KI270715v1_random,length=161471>
+##contig=<ID=chr2_KI270716v1_random,length=153799>
+##contig=<ID=chr3,length=198295559>
+##contig=<ID=chr3_GL000221v1_random,length=155397>
+##contig=<ID=chr4,length=190214555>
+##contig=<ID=chr4_GL000008v2_random,length=209709>
+##contig=<ID=chr5,length=181538259>
+##contig=<ID=chr5_GL000208v1_random,length=92689>
+##contig=<ID=chr6,length=170805979>
+##contig=<ID=chr7,length=159345973>
+##contig=<ID=chr8,length=145138636>
+##contig=<ID=chr9,length=138394717>
+##contig=<ID=chr9_KI270717v1_random,length=40062>
+##contig=<ID=chr9_KI270718v1_random,length=38054>
+##contig=<ID=chr9_KI270719v1_random,length=176845>
+##contig=<ID=chr9_KI270720v1_random,length=39050>
+##contig=<ID=chr10,length=133797422>
+##contig=<ID=chr11,length=135086622>
+##contig=<ID=chr11_KI270721v1_random,length=100316>
+##contig=<ID=chr12,length=133275309>
+##contig=<ID=chr13,length=114364328>
+##contig=<ID=chr14,length=107043718>
+##contig=<ID=chr14_GL000009v2_random,length=201709>
+##contig=<ID=chr14_GL000225v1_random,length=211173>
+##contig=<ID=chr14_KI270722v1_random,length=194050>
+##contig=<ID=chr14_GL000194v1_random,length=191469>
+##contig=<ID=chr14_KI270723v1_random,length=38115>
+##contig=<ID=chr14_KI270724v1_random,length=39555>
+##contig=<ID=chr14_KI270725v1_random,length=172810>
+##contig=<ID=chr14_KI270726v1_random,length=43739>
+##contig=<ID=chr15,length=101991189>
+##contig=<ID=chr15_KI270727v1_random,length=448248>
+##contig=<ID=chr16,length=90338345>
+##contig=<ID=chr16_KI270728v1_random,length=1872759>
+##contig=<ID=chr17,length=83257441>
+##contig=<ID=chr17_GL000205v2_random,length=185591>
+##contig=<ID=chr17_KI270729v1_random,length=280839>
+##contig=<ID=chr17_KI270730v1_random,length=112551>
+##contig=<ID=chr18,length=80373285>
+##contig=<ID=chr19,length=58617616>
+##contig=<ID=chr20,length=64444167>
+##contig=<ID=chr21,length=46709983>
+##contig=<ID=chr22,length=50818468>
+##contig=<ID=chr22_KI270731v1_random,length=150754>
+##contig=<ID=chr22_KI270732v1_random,length=41543>
+##contig=<ID=chr22_KI270733v1_random,length=179772>
+##contig=<ID=chr22_KI270734v1_random,length=165050>
+##contig=<ID=chr22_KI270735v1_random,length=42811>
+##contig=<ID=chr22_KI270736v1_random,length=181920>
+##contig=<ID=chr22_KI270737v1_random,length=103838>
+##contig=<ID=chr22_KI270738v1_random,length=99375>
+##contig=<ID=chr22_KI270739v1_random,length=73985>
+##contig=<ID=chrX,length=156040895>
+##contig=<ID=chrY,length=57227415>
+##contig=<ID=chrY_KI270740v1_random,length=37240>
+##contig=<ID=chrUn_KI270302v1,length=2274>
+##contig=<ID=chrUn_KI270304v1,length=2165>
+##contig=<ID=chrUn_KI270303v1,length=1942>
+##contig=<ID=chrUn_KI270305v1,length=1472>
+##contig=<ID=chrUn_KI270322v1,length=21476>
+##contig=<ID=chrUn_KI270320v1,length=4416>
+##contig=<ID=chrUn_KI270310v1,length=1201>
+##contig=<ID=chrUn_KI270316v1,length=1444>
+##contig=<ID=chrUn_KI270315v1,length=2276>
+##contig=<ID=chrUn_KI270312v1,length=998>
+##contig=<ID=chrUn_KI270311v1,length=12399>
+##contig=<ID=chrUn_KI270317v1,length=37690>
+##contig=<ID=chrUn_KI270412v1,length=1179>
+##contig=<ID=chrUn_KI270411v1,length=2646>
+##contig=<ID=chrUn_KI270414v1,length=2489>
+##contig=<ID=chrUn_KI270419v1,length=1029>
+##contig=<ID=chrUn_KI270418v1,length=2145>
+##contig=<ID=chrUn_KI270420v1,length=2321>
+##contig=<ID=chrUn_KI270424v1,length=2140>
+##contig=<ID=chrUn_KI270417v1,length=2043>
+##contig=<ID=chrUn_KI270422v1,length=1445>
+##contig=<ID=chrUn_KI270423v1,length=981>
+##contig=<ID=chrUn_KI270425v1,length=1884>
+##contig=<ID=chrUn_KI270429v1,length=1361>
+##contig=<ID=chrUn_KI270442v1,length=392061>
+##contig=<ID=chrUn_KI270466v1,length=1233>
+##contig=<ID=chrUn_KI270465v1,length=1774>
+##contig=<ID=chrUn_KI270467v1,length=3920>
+##contig=<ID=chrUn_KI270435v1,length=92983>
+##contig=<ID=chrUn_KI270438v1,length=112505>
+##contig=<ID=chrUn_KI270468v1,length=4055>
+##contig=<ID=chrUn_KI270510v1,length=2415>
+##contig=<ID=chrUn_KI270509v1,length=2318>
+##contig=<ID=chrUn_KI270518v1,length=2186>
+##contig=<ID=chrUn_KI270508v1,length=1951>
+##contig=<ID=chrUn_KI270516v1,length=1300>
+##contig=<ID=chrUn_KI270512v1,length=22689>
+##contig=<ID=chrUn_KI270519v1,length=138126>
+##contig=<ID=chrUn_KI270522v1,length=5674>
+##contig=<ID=chrUn_KI270511v1,length=8127>
+##contig=<ID=chrUn_KI270515v1,length=6361>
+##contig=<ID=chrUn_KI270507v1,length=5353>
+##contig=<ID=chrUn_KI270517v1,length=3253>
+##contig=<ID=chrUn_KI270529v1,length=1899>
+##contig=<ID=chrUn_KI270528v1,length=2983>
+##contig=<ID=chrUn_KI270530v1,length=2168>
+##contig=<ID=chrUn_KI270539v1,length=993>
+##contig=<ID=chrUn_KI270538v1,length=91309>
+##contig=<ID=chrUn_KI270544v1,length=1202>
+##contig=<ID=chrUn_KI270548v1,length=1599>
+##contig=<ID=chrUn_KI270583v1,length=1400>
+##contig=<ID=chrUn_KI270587v1,length=2969>
+##contig=<ID=chrUn_KI270580v1,length=1553>
+##contig=<ID=chrUn_KI270581v1,length=7046>
+##contig=<ID=chrUn_KI270579v1,length=31033>
+##contig=<ID=chrUn_KI270589v1,length=44474>
+##contig=<ID=chrUn_KI270590v1,length=4685>
+##contig=<ID=chrUn_KI270584v1,length=4513>
+##contig=<ID=chrUn_KI270582v1,length=6504>
+##contig=<ID=chrUn_KI270588v1,length=6158>
+##contig=<ID=chrUn_KI270593v1,length=3041>
+##contig=<ID=chrUn_KI270591v1,length=5796>
+##contig=<ID=chrUn_KI270330v1,length=1652>
+##contig=<ID=chrUn_KI270329v1,length=1040>
+##contig=<ID=chrUn_KI270334v1,length=1368>
+##contig=<ID=chrUn_KI270333v1,length=2699>
+##contig=<ID=chrUn_KI270335v1,length=1048>
+##contig=<ID=chrUn_KI270338v1,length=1428>
+##contig=<ID=chrUn_KI270340v1,length=1428>
+##contig=<ID=chrUn_KI270336v1,length=1026>
+##contig=<ID=chrUn_KI270337v1,length=1121>
+##contig=<ID=chrUn_KI270363v1,length=1803>
+##contig=<ID=chrUn_KI270364v1,length=2855>
+##contig=<ID=chrUn_KI270362v1,length=3530>
+##contig=<ID=chrUn_KI270366v1,length=8320>
+##contig=<ID=chrUn_KI270378v1,length=1048>
+##contig=<ID=chrUn_KI270379v1,length=1045>
+##contig=<ID=chrUn_KI270389v1,length=1298>
+##contig=<ID=chrUn_KI270390v1,length=2387>
+##contig=<ID=chrUn_KI270387v1,length=1537>
+##contig=<ID=chrUn_KI270395v1,length=1143>
+##contig=<ID=chrUn_KI270396v1,length=1880>
+##contig=<ID=chrUn_KI270388v1,length=1216>
+##contig=<ID=chrUn_KI270394v1,length=970>
+##contig=<ID=chrUn_KI270386v1,length=1788>
+##contig=<ID=chrUn_KI270391v1,length=1484>
+##contig=<ID=chrUn_KI270383v1,length=1750>
+##contig=<ID=chrUn_KI270393v1,length=1308>
+##contig=<ID=chrUn_KI270384v1,length=1658>
+##contig=<ID=chrUn_KI270392v1,length=971>
+##contig=<ID=chrUn_KI270381v1,length=1930>
+##contig=<ID=chrUn_KI270385v1,length=990>
+##contig=<ID=chrUn_KI270382v1,length=4215>
+##contig=<ID=chrUn_KI270376v1,length=1136>
+##contig=<ID=chrUn_KI270374v1,length=2656>
+##contig=<ID=chrUn_KI270372v1,length=1650>
+##contig=<ID=chrUn_KI270373v1,length=1451>
+##contig=<ID=chrUn_KI270375v1,length=2378>
+##contig=<ID=chrUn_KI270371v1,length=2805>
+##contig=<ID=chrUn_KI270448v1,length=7992>
+##contig=<ID=chrUn_KI270521v1,length=7642>
+##contig=<ID=chrUn_GL000195v1,length=182896>
+##contig=<ID=chrUn_GL000219v1,length=179198>
+##contig=<ID=chrUn_GL000220v1,length=161802>
+##contig=<ID=chrUn_GL000224v1,length=179693>
+##contig=<ID=chrUn_KI270741v1,length=157432>
+##contig=<ID=chrUn_GL000226v1,length=15008>
+##contig=<ID=chrUn_GL000213v1,length=164239>
+##contig=<ID=chrUn_KI270743v1,length=210658>
+##contig=<ID=chrUn_KI270744v1,length=168472>
+##contig=<ID=chrUn_KI270745v1,length=41891>
+##contig=<ID=chrUn_KI270746v1,length=66486>
+##contig=<ID=chrUn_KI270747v1,length=198735>
+##contig=<ID=chrUn_KI270748v1,length=93321>
+##contig=<ID=chrUn_KI270749v1,length=158759>
+##contig=<ID=chrUn_KI270750v1,length=148850>
+##contig=<ID=chrUn_KI270751v1,length=150742>
+##contig=<ID=chrUn_KI270753v1,length=62944>
+##contig=<ID=chrUn_KI270754v1,length=40191>
+##contig=<ID=chrUn_KI270755v1,length=36723>
+##contig=<ID=chrUn_KI270756v1,length=79590>
+##contig=<ID=chrUn_KI270757v1,length=71251>
+##contig=<ID=chrUn_GL000214v1,length=137718>
+##contig=<ID=chrUn_KI270742v1,length=186739>
+##contig=<ID=chrUn_GL000216v2,length=176608>
+##contig=<ID=chrUn_GL000218v1,length=161147>
+##contig=<ID=chr1_KQ031383v1_fix,length=467143>
+##contig=<ID=chr1_KQ983255v1_alt,length=278659>
+##contig=<ID=chr1_KN538361v1_fix,length=305542>
+##contig=<ID=chr1_KQ458383v1_alt,length=349938>
+##contig=<ID=chr1_KN196473v1_fix,length=166200>
+##contig=<ID=chr1_KZ208904v1_alt,length=166136>
+##contig=<ID=chr1_KZ559100v1_fix,length=44955>
+##contig=<ID=chr1_KN196472v1_fix,length=186494>
+##contig=<ID=chr1_KZ208905v1_alt,length=140355>
+##contig=<ID=chr1_KQ458382v1_alt,length=141019>
+##contig=<ID=chr1_KV880763v1_alt,length=551020>
+##contig=<ID=chr1_KN196474v1_fix,length=122022>
+##contig=<ID=chr1_KN538360v1_fix,length=460100>
+##contig=<ID=chr1_KZ208906v1_fix,length=330031>
+##contig=<ID=chr1_KQ458384v1_alt,length=212205>
+##contig=<ID=na,length=84043>
+##contig=<ID=chr2_KQ031384v1_fix,length=481245>
+##contig=<ID=chr2_KZ208907v1_alt,length=181658>
+##contig=<ID=chr2_KQ983256v1_alt,length=535088>
+##contig=<ID=chr2_KZ208908v1_alt,length=140361>
+##contig=<ID=chr2_KN538363v1_fix,length=365499>
+##contig=<ID=na,length=145975>
+##contig=<ID=chr2_KN538362v1_fix,length=208149>
+##contig=<ID=chr3_KV766192v1_fix,length=411654>
+##contig=<ID=chr3_KN196475v1_fix,length=451168>
+##contig=<ID=chr3_KQ031385v1_fix,length=373699>
+##contig=<ID=chr3_KN538364v1_fix,length=415308>
+##contig=<ID=na,length=215443>
+##contig=<ID=chr3_KZ208909v1_alt,length=175849>
+##contig=<ID=chr3_KQ031386v1_fix,length=165718>
+##contig=<ID=chr3_KN196476v1_fix,length=305979>
+##contig=<ID=chr3_KZ559104v1_fix,length=105527>
+##contig=<ID=chr3_KZ559105v1_alt,length=195063>
+##contig=<ID=chr3_KZ559103v1_alt,length=302885>
+##contig=<ID=chr3_KZ559102v1_alt,length=197752>
+##contig=<ID=chr3_KZ559101v1_alt,length=164041>
+##contig=<ID=na,length=235734>
+##contig=<ID=na,length=176674>
+##contig=<ID=chr4_KQ090013v1_alt,length=90922>
+##contig=<ID=na,length=53476>
+##contig=<ID=na,length=125549>
+##contig=<ID=na,length=341066>
+##contig=<ID=na,length=276109>
+##contig=<ID=chr4_KQ090014v1_alt,length=163749>
+##contig=<ID=chr4_KQ090015v1_alt,length=236512>
+##contig=<ID=chr4_KV766193v1_alt,length=420675>
+##contig=<ID=chr4_KQ983257v1_fix,length=230434>
+##contig=<ID=chr4_KQ983258v1_alt,length=205407>
+##contig=<ID=chr5_KZ208910v1_alt,length=135987>
+##contig=<ID=chr5_KN196477v1_alt,length=139087>
+##contig=<ID=chr5_KV575243v1_alt,length=362221>
+##contig=<ID=na,length=89956>
+##contig=<ID=chr5_KV575244v1_fix,length=673059>
+##contig=<ID=chr6_KZ208911v1_fix,length=242796>
+##contig=<ID=chr6_KQ090017v1_alt,length=82315>
+##contig=<ID=chr6_KQ031387v1_fix,length=320750>
+##contig=<ID=chr6_KN196478v1_fix,length=268330>
+##contig=<ID=chr6_KQ090016v1_fix,length=245716>
+##contig=<ID=chr6_KV766194v1_fix,length=139427>
+##contig=<ID=na,length=73265>
+##contig=<ID=na,length=254759>
+##contig=<ID=chr7_KZ559106v1_alt,length=172555>
+##contig=<ID=chr7_KV880764v1_fix,length=142129>
+##contig=<ID=chr7_KV880765v1_fix,length=468267>
+##contig=<ID=chr7_KZ208912v1_fix,length=589656>
+##contig=<ID=chr7_KZ208913v1_alt,length=680662>
+##contig=<ID=chr7_KQ031388v1_fix,length=179932>
+##contig=<ID=chr8_KZ208915v1_fix,length=6367528>
+##contig=<ID=chr8_KV880767v1_fix,length=265876>
+##contig=<ID=chr8_KV880766v1_fix,length=156998>
+##contig=<ID=chr8_KZ559107v1_alt,length=103072>
+##contig=<ID=chr8_KZ208914v1_fix,length=165120>
+##contig=<ID=chr9_KQ090018v1_alt,length=163882>
+##contig=<ID=chr9_KQ090019v1_alt,length=134099>
+##contig=<ID=chr9_KN196479v1_fix,length=330164>
+##contig=<ID=na,length=25408>
+##contig=<ID=na,length=454963>
+##contig=<ID=chr10_KN538367v1_fix,length=420164>
+##contig=<ID=na,length=292944>
+##contig=<ID=chr10_KQ090020v1_alt,length=185507>
+##contig=<ID=chr10_KN196480v1_fix,length=277797>
+##contig=<ID=chr10_KQ090021v1_fix,length=264545>
+##contig=<ID=chr10_KN538366v1_fix,length=85284>
+##contig=<ID=chr10_KN538365v1_fix,length=14347>
+##contig=<ID=chr11_KQ759759v1_fix,length=196940>
+##contig=<ID=na,length=270122>
+##contig=<ID=chr11_KN538368v1_alt,length=203552>
+##contig=<ID=na,length=170928>
+##contig=<ID=chr11_KZ559109v1_fix,length=279644>
+##contig=<ID=chr11_KZ559108v1_fix,length=305244>
+##contig=<ID=chr11_KV766195v1_fix,length=140877>
+##contig=<ID=chr11_KZ559111v1_alt,length=181167>
+##contig=<ID=na,length=217075>
+##contig=<ID=na,length=165419>
+##contig=<ID=chr11_KZ559110v1_alt,length=301637>
+##contig=<ID=chr11_KQ090022v1_fix,length=181958>
+##contig=<ID=na,length=45257>
+##contig=<ID=chr11_KN196481v1_fix,length=108875>
+##contig=<ID=chr12_KQ090023v1_alt,length=109323>
+##contig=<ID=chr12_KZ208916v1_fix,length=1046838>
+##contig=<ID=na,length=192531>
+##contig=<ID=chr12_KN538369v1_fix,length=541038>
+##contig=<ID=chr12_KN196482v1_fix,length=211377>
+##contig=<ID=chr12_KZ208918v1_alt,length=174808>
+##contig=<ID=chr12_KQ759760v1_fix,length=315610>
+##contig=<ID=chr12_KZ208917v1_fix,length=64689>
+##contig=<ID=chr12_KN538370v1_fix,length=86533>
+##contig=<ID=chr12_KZ559112v1_alt,length=154139>
+##contig=<ID=na,length=297568>
+##contig=<ID=na,length=409912>
+##contig=<ID=chr13_KN538372v1_fix,length=356766>
+##contig=<ID=chr13_KQ090024v1_alt,length=168146>
+##contig=<ID=na,length=7309>
+##contig=<ID=chr13_KN196483v1_fix,length=35455>
+##contig=<ID=chr13_KN538373v1_fix,length=148762>
+##contig=<ID=chr13_KQ090025v1_alt,length=123480>
+##contig=<ID=na,length=158944>
+##contig=<ID=na,length=65394>
+##contig=<ID=chr13_KN538371v1_fix,length=206320>
+##contig=<ID=na,length=399183>
+##contig=<ID=chr14_KZ208920v1_fix,length=690932>
+##contig=<ID=na,length=264228>
+##contig=<ID=chr14_KZ208919v1_alt,length=171798>
+##contig=<ID=chr15_KN538374v1_fix,length=4998962>
+##contig=<ID=na,length=396515>
+##contig=<ID=na,length=5500449>
+##contig=<ID=chr15_KQ031389v1_alt,length=2365364>
+##contig=<ID=na,length=369264>
+##contig=<ID=na,length=97763>
+##contig=<ID=chr16_KQ090026v1_alt,length=59016>
+##contig=<ID=chr16_KZ559113v1_fix,length=480415>
+##contig=<ID=chr16_KV880768v1_fix,length=1927115>
+##contig=<ID=na,length=270967>
+##contig=<ID=chr16_KQ090027v1_alt,length=267463>
+##contig=<ID=chr16_KZ208921v1_alt,length=78609>
+##contig=<ID=chr16_KQ031390v1_alt,length=169136>
+##contig=<ID=chr17_KV766196v1_fix,length=281919>
+##contig=<ID=na,length=137908>
+##contig=<ID=chr17_KV575245v1_fix,length=154723>
+##contig=<ID=chr17_KV766198v1_alt,length=276292>
+##contig=<ID=chr17_KV766197v1_alt,length=246895>
+##contig=<ID=chr17_KZ559114v1_alt,length=116753>
+##contig=<ID=na,length=56695>
+##contig=<ID=chr18_KZ559116v1_alt,length=163186>
+##contig=<ID=chr18_KQ458385v1_alt,length=205101>
+##contig=<ID=chr18_KZ559115v1_fix,length=230843>
+##contig=<ID=chr18_KQ090028v1_fix,length=407387>
+##contig=<ID=chr18_KZ208922v1_fix,length=93070>
+##contig=<ID=na,length=493165>
+##contig=<ID=chr19_KQ458386v1_fix,length=405389>
+##contig=<ID=chr19_KN196484v1_fix,length=370917>
+##contig=<ID=chr19_KV575246v1_alt,length=163926>
+##contig=<ID=chr19_KV575247v1_alt,length=170206>
+##contig=<ID=chr19_KV575248v1_alt,length=168131>
+##contig=<ID=chr19_KV575249v1_alt,length=293522>
+##contig=<ID=chr19_KV575250v1_alt,length=241058>
+##contig=<ID=chr19_KV575251v1_alt,length=159285>
+##contig=<ID=chr19_KV575252v1_alt,length=178197>
+##contig=<ID=chr19_KV575253v1_alt,length=166713>
+##contig=<ID=chr19_KV575254v1_alt,length=99845>
+##contig=<ID=chr19_KV575255v1_alt,length=161095>
+##contig=<ID=chr19_KV575256v1_alt,length=223118>
+##contig=<ID=chr19_KV575257v1_alt,length=100553>
+##contig=<ID=chr19_KV575259v1_alt,length=171263>
+##contig=<ID=chr19_KV575260v1_alt,length=145691>
+##contig=<ID=chr19_KV575258v1_alt,length=156965>
+##contig=<ID=na,length=519485>
+##contig=<ID=na,length=412368>
+##contig=<ID=na,length=461303>
+##contig=<ID=chr22_KN196485v1_alt,length=156562>
+##contig=<ID=chr22_KQ458387v1_alt,length=155930>
+##contig=<ID=chr22_KQ458388v1_alt,length=174749>
+##contig=<ID=chr22_KN196486v1_alt,length=153027>
+##contig=<ID=chr22_KQ759761v1_alt,length=145162>
+##contig=<ID=na,length=12295>
+##contig=<ID=chr22_KQ759762v1_fix,length=101037>
+##contig=<ID=chrX_KV766199v1_alt,length=188004>
+##contig=<ID=na,length=17435>
+##contig=<ID=na,length=28824>
+##contig=<ID=na,length=68192>
+##contig=<ID=na,length=403128>
+##contig=<ID=na,length=14678>
+##contig=<ID=chrY_KZ208923v1_fix,length=48370>
+##contig=<ID=chrY_KZ208924v1_fix,length=209722>
+##contig=<ID=chrY_KN196487v1_fix,length=101150>
+##contig=<ID=chr1_KI270762v1_alt,length=354444>
+##contig=<ID=chr1_KI270766v1_alt,length=256271>
+##contig=<ID=chr1_KI270760v1_alt,length=109528>
+##contig=<ID=chr1_KI270765v1_alt,length=185285>
+##contig=<ID=chr1_GL383518v1_alt,length=182439>
+##contig=<ID=chr1_GL383519v1_alt,length=110268>
+##contig=<ID=chr1_GL383520v2_alt,length=366580>
+##contig=<ID=chr1_KI270764v1_alt,length=50258>
+##contig=<ID=chr1_KI270763v1_alt,length=911658>
+##contig=<ID=chr1_KI270759v1_alt,length=425601>
+##contig=<ID=chr1_KI270761v1_alt,length=165834>
+##contig=<ID=chr2_KI270770v1_alt,length=136240>
+##contig=<ID=chr2_KI270773v1_alt,length=70887>
+##contig=<ID=chr2_KI270774v1_alt,length=223625>
+##contig=<ID=chr2_KI270769v1_alt,length=120616>
+##contig=<ID=chr2_GL383521v1_alt,length=143390>
+##contig=<ID=chr2_KI270772v1_alt,length=133041>
+##contig=<ID=chr2_KI270775v1_alt,length=138019>
+##contig=<ID=chr2_KI270771v1_alt,length=110395>
+##contig=<ID=chr2_KI270768v1_alt,length=110099>
+##contig=<ID=chr2_GL582966v2_alt,length=96131>
+##contig=<ID=chr2_GL383522v1_alt,length=123821>
+##contig=<ID=chr2_KI270776v1_alt,length=174166>
+##contig=<ID=chr2_KI270767v1_alt,length=161578>
+##contig=<ID=chr3_JH636055v2_alt,length=173151>
+##contig=<ID=chr3_KI270783v1_alt,length=109187>
+##contig=<ID=chr3_KI270780v1_alt,length=224108>
+##contig=<ID=chr3_GL383526v1_alt,length=180671>
+##contig=<ID=chr3_KI270777v1_alt,length=173649>
+##contig=<ID=chr3_KI270778v1_alt,length=248252>
+##contig=<ID=chr3_KI270781v1_alt,length=113034>
+##contig=<ID=chr3_KI270779v1_alt,length=205312>
+##contig=<ID=chr3_KI270782v1_alt,length=162429>
+##contig=<ID=chr3_KI270784v1_alt,length=184404>
+##contig=<ID=chr4_KI270790v1_alt,length=220246>
+##contig=<ID=chr4_GL383528v1_alt,length=376187>
+##contig=<ID=chr4_KI270787v1_alt,length=111943>
+##contig=<ID=chr4_GL000257v2_alt,length=586476>
+##contig=<ID=chr4_KI270788v1_alt,length=158965>
+##contig=<ID=chr4_GL383527v1_alt,length=164536>
+##contig=<ID=chr4_KI270785v1_alt,length=119912>
+##contig=<ID=chr4_KI270789v1_alt,length=205944>
+##contig=<ID=chr4_KI270786v1_alt,length=244096>
+##contig=<ID=chr5_KI270793v1_alt,length=126136>
+##contig=<ID=chr5_KI270792v1_alt,length=179043>
+##contig=<ID=chr5_KI270791v1_alt,length=195710>
+##contig=<ID=chr5_GL383532v1_alt,length=82728>
+##contig=<ID=chr5_GL949742v1_alt,length=226852>
+##contig=<ID=chr5_KI270794v1_alt,length=164558>
+##contig=<ID=chr5_GL339449v2_alt,length=1612928>
+##contig=<ID=chr5_GL383530v1_alt,length=101241>
+##contig=<ID=chr5_KI270796v1_alt,length=172708>
+##contig=<ID=chr5_GL383531v1_alt,length=173459>
+##contig=<ID=chr5_KI270795v1_alt,length=131892>
+##contig=<ID=chr6_GL000250v2_alt,length=4672374>
+##contig=<ID=chr6_KI270800v1_alt,length=175808>
+##contig=<ID=chr6_KI270799v1_alt,length=152148>
+##contig=<ID=chr6_GL383533v1_alt,length=124736>
+##contig=<ID=chr6_KI270801v1_alt,length=870480>
+##contig=<ID=chr6_KI270802v1_alt,length=75005>
+##contig=<ID=chr6_KB021644v2_alt,length=185823>
+##contig=<ID=chr6_KI270797v1_alt,length=197536>
+##contig=<ID=chr6_KI270798v1_alt,length=271782>
+##contig=<ID=chr7_KI270804v1_alt,length=157952>
+##contig=<ID=chr7_KI270809v1_alt,length=209586>
+##contig=<ID=chr7_KI270806v1_alt,length=158166>
+##contig=<ID=chr7_GL383534v2_alt,length=119183>
+##contig=<ID=chr7_KI270803v1_alt,length=1111570>
+##contig=<ID=chr7_KI270808v1_alt,length=271455>
+##contig=<ID=chr7_KI270807v1_alt,length=126434>
+##contig=<ID=chr7_KI270805v1_alt,length=209988>
+##contig=<ID=chr8_KI270818v1_alt,length=145606>
+##contig=<ID=chr8_KI270812v1_alt,length=282736>
+##contig=<ID=chr8_KI270811v1_alt,length=292436>
+##contig=<ID=chr8_KI270821v1_alt,length=985506>
+##contig=<ID=chr8_KI270813v1_alt,length=300230>
+##contig=<ID=chr8_KI270822v1_alt,length=624492>
+##contig=<ID=chr8_KI270814v1_alt,length=141812>
+##contig=<ID=chr8_KI270810v1_alt,length=374415>
+##contig=<ID=chr8_KI270819v1_alt,length=133535>
+##contig=<ID=chr8_KI270820v1_alt,length=36640>
+##contig=<ID=chr8_KI270817v1_alt,length=158983>
+##contig=<ID=chr8_KI270816v1_alt,length=305841>
+##contig=<ID=chr8_KI270815v1_alt,length=132244>
+##contig=<ID=chr9_GL383539v1_alt,length=162988>
+##contig=<ID=chr9_GL383540v1_alt,length=71551>
+##contig=<ID=chr9_GL383541v1_alt,length=171286>
+##contig=<ID=chr9_GL383542v1_alt,length=60032>
+##contig=<ID=chr9_KI270823v1_alt,length=439082>
+##contig=<ID=chr10_GL383545v1_alt,length=179254>
+##contig=<ID=chr10_KI270824v1_alt,length=181496>
+##contig=<ID=chr10_GL383546v1_alt,length=309802>
+##contig=<ID=chr10_KI270825v1_alt,length=188315>
+##contig=<ID=chr11_KI270832v1_alt,length=210133>
+##contig=<ID=chr11_KI270830v1_alt,length=177092>
+##contig=<ID=chr11_KI270831v1_alt,length=296895>
+##contig=<ID=chr11_KI270829v1_alt,length=204059>
+##contig=<ID=chr11_GL383547v1_alt,length=154407>
+##contig=<ID=chr11_JH159136v1_alt,length=200998>
+##contig=<ID=chr11_JH159137v1_alt,length=191409>
+##contig=<ID=chr11_KI270827v1_alt,length=67707>
+##contig=<ID=chr11_KI270826v1_alt,length=186169>
+##contig=<ID=chr12_GL877875v1_alt,length=167313>
+##contig=<ID=chr12_GL877876v1_alt,length=408271>
+##contig=<ID=chr12_KI270837v1_alt,length=40090>
+##contig=<ID=chr12_GL383549v1_alt,length=120804>
+##contig=<ID=chr12_KI270835v1_alt,length=238139>
+##contig=<ID=chr12_GL383550v2_alt,length=169178>
+##contig=<ID=chr12_GL383552v1_alt,length=138655>
+##contig=<ID=chr12_GL383553v2_alt,length=152874>
+##contig=<ID=chr12_KI270834v1_alt,length=119498>
+##contig=<ID=chr12_GL383551v1_alt,length=184319>
+##contig=<ID=chr12_KI270833v1_alt,length=76061>
+##contig=<ID=chr12_KI270836v1_alt,length=56134>
+##contig=<ID=chr13_KI270840v1_alt,length=191684>
+##contig=<ID=chr13_KI270839v1_alt,length=180306>
+##contig=<ID=chr13_KI270843v1_alt,length=103832>
+##contig=<ID=chr13_KI270841v1_alt,length=169134>
+##contig=<ID=chr13_KI270838v1_alt,length=306913>
+##contig=<ID=chr13_KI270842v1_alt,length=37287>
+##contig=<ID=chr14_KI270844v1_alt,length=322166>
+##contig=<ID=chr14_KI270847v1_alt,length=1511111>
+##contig=<ID=chr14_KI270845v1_alt,length=180703>
+##contig=<ID=chr14_KI270846v1_alt,length=1351393>
+##contig=<ID=chr15_KI270852v1_alt,length=478999>
+##contig=<ID=chr15_KI270851v1_alt,length=263054>
+##contig=<ID=chr15_KI270848v1_alt,length=327382>
+##contig=<ID=chr15_GL383554v1_alt,length=296527>
+##contig=<ID=chr15_KI270849v1_alt,length=244917>
+##contig=<ID=chr15_GL383555v2_alt,length=388773>
+##contig=<ID=chr15_KI270850v1_alt,length=430880>
+##contig=<ID=chr16_KI270854v1_alt,length=134193>
+##contig=<ID=chr16_KI270856v1_alt,length=63982>
+##contig=<ID=chr16_KI270855v1_alt,length=232857>
+##contig=<ID=chr16_KI270853v1_alt,length=2659700>
+##contig=<ID=chr16_GL383556v1_alt,length=192462>
+##contig=<ID=chr16_GL383557v1_alt,length=89672>
+##contig=<ID=chr17_GL383563v3_alt,length=375691>
+##contig=<ID=chr17_KI270862v1_alt,length=391357>
+##contig=<ID=chr17_KI270861v1_alt,length=196688>
+##contig=<ID=chr17_KI270857v1_alt,length=2877074>
+##contig=<ID=chr17_JH159146v1_alt,length=278131>
+##contig=<ID=chr17_JH159147v1_alt,length=70345>
+##contig=<ID=chr17_GL383564v2_alt,length=133151>
+##contig=<ID=chr17_GL000258v2_alt,length=1821992>
+##contig=<ID=chr17_GL383565v1_alt,length=223995>
+##contig=<ID=chr17_KI270858v1_alt,length=235827>
+##contig=<ID=chr17_KI270859v1_alt,length=108763>
+##contig=<ID=chr17_GL383566v1_alt,length=90219>
+##contig=<ID=chr17_KI270860v1_alt,length=178921>
+##contig=<ID=chr18_KI270864v1_alt,length=111737>
+##contig=<ID=chr18_GL383567v1_alt,length=289831>
+##contig=<ID=chr18_GL383570v1_alt,length=164789>
+##contig=<ID=chr18_GL383571v1_alt,length=198278>
+##contig=<ID=chr18_GL383568v1_alt,length=104552>
+##contig=<ID=chr18_GL383569v1_alt,length=167950>
+##contig=<ID=chr18_GL383572v1_alt,length=159547>
+##contig=<ID=chr18_KI270863v1_alt,length=167999>
+##contig=<ID=chr19_KI270868v1_alt,length=61734>
+##contig=<ID=chr19_KI270865v1_alt,length=52969>
+##contig=<ID=chr19_GL383573v1_alt,length=385657>
+##contig=<ID=chr19_GL383575v2_alt,length=170222>
+##contig=<ID=chr19_GL383576v1_alt,length=188024>
+##contig=<ID=chr19_GL383574v1_alt,length=155864>
+##contig=<ID=chr19_KI270866v1_alt,length=43156>
+##contig=<ID=chr19_KI270867v1_alt,length=233762>
+##contig=<ID=chr19_GL949746v1_alt,length=987716>
+##contig=<ID=chr20_GL383577v2_alt,length=128386>
+##contig=<ID=chr20_KI270869v1_alt,length=118774>
+##contig=<ID=chr20_KI270871v1_alt,length=58661>
+##contig=<ID=chr20_KI270870v1_alt,length=183433>
+##contig=<ID=chr21_GL383578v2_alt,length=63917>
+##contig=<ID=chr21_KI270874v1_alt,length=166743>
+##contig=<ID=chr21_KI270873v1_alt,length=143900>
+##contig=<ID=chr21_GL383579v2_alt,length=201197>
+##contig=<ID=chr21_GL383580v2_alt,length=74653>
+##contig=<ID=chr21_GL383581v2_alt,length=116689>
+##contig=<ID=chr21_KI270872v1_alt,length=82692>
+##contig=<ID=chr22_KI270875v1_alt,length=259914>
+##contig=<ID=chr22_KI270878v1_alt,length=186262>
+##contig=<ID=chr22_KI270879v1_alt,length=304135>
+##contig=<ID=chr22_KI270876v1_alt,length=263666>
+##contig=<ID=chr22_KI270877v1_alt,length=101331>
+##contig=<ID=chr22_GL383583v2_alt,length=96924>
+##contig=<ID=chr22_GL383582v2_alt,length=162811>
+##contig=<ID=chrX_KI270880v1_alt,length=284869>
+##contig=<ID=chrX_KI270881v1_alt,length=144206>
+##contig=<ID=chr1_KI270892v1_alt,length=162212>
+##contig=<ID=chr2_KI270894v1_alt,length=214158>
+##contig=<ID=chr2_KI270893v1_alt,length=161218>
+##contig=<ID=chr3_KI270895v1_alt,length=162896>
+##contig=<ID=chr4_KI270896v1_alt,length=378547>
+##contig=<ID=chr5_KI270897v1_alt,length=1144418>
+##contig=<ID=chr5_KI270898v1_alt,length=130957>
+##contig=<ID=chr6_GL000251v2_alt,length=4795265>
+##contig=<ID=chr7_KI270899v1_alt,length=190869>
+##contig=<ID=chr8_KI270901v1_alt,length=136959>
+##contig=<ID=chr8_KI270900v1_alt,length=318687>
+##contig=<ID=chr11_KI270902v1_alt,length=106711>
+##contig=<ID=chr11_KI270903v1_alt,length=214625>
+##contig=<ID=chr12_KI270904v1_alt,length=572349>
+##contig=<ID=chr15_KI270906v1_alt,length=196384>
+##contig=<ID=chr15_KI270905v1_alt,length=5161414>
+##contig=<ID=chr17_KI270907v1_alt,length=137721>
+##contig=<ID=chr17_KI270910v1_alt,length=157099>
+##contig=<ID=chr17_KI270909v1_alt,length=325800>
+##contig=<ID=chr17_JH159148v1_alt,length=88070>
+##contig=<ID=chr17_KI270908v1_alt,length=1423190>
+##contig=<ID=chr18_KI270912v1_alt,length=174061>
+##contig=<ID=chr18_KI270911v1_alt,length=157710>
+##contig=<ID=chr19_GL949747v2_alt,length=729520>
+##contig=<ID=chr22_KB663609v1_alt,length=74013>
+##contig=<ID=chrX_KI270913v1_alt,length=274009>
+##contig=<ID=chr3_KI270924v1_alt,length=166540>
+##contig=<ID=chr4_KI270925v1_alt,length=555799>
+##contig=<ID=chr6_GL000252v2_alt,length=4604811>
+##contig=<ID=chr8_KI270926v1_alt,length=229282>
+##contig=<ID=chr11_KI270927v1_alt,length=218612>
+##contig=<ID=chr19_GL949748v2_alt,length=1064304>
+##contig=<ID=chr22_KI270928v1_alt,length=176103>
+##contig=<ID=chr3_KI270934v1_alt,length=163458>
+##contig=<ID=chr6_GL000253v2_alt,length=4677643>
+##contig=<ID=chr19_GL949749v2_alt,length=1091841>
+##contig=<ID=chr3_KI270935v1_alt,length=197351>
+##contig=<ID=chr6_GL000254v2_alt,length=4827813>
+##contig=<ID=chr19_GL949750v2_alt,length=1066390>
+##contig=<ID=chr3_KI270936v1_alt,length=164170>
+##contig=<ID=chr6_GL000255v2_alt,length=4606388>
+##contig=<ID=chr19_GL949751v2_alt,length=1002683>
+##contig=<ID=chr3_KI270937v1_alt,length=165607>
+##contig=<ID=chr6_GL000256v2_alt,length=4929269>
+##contig=<ID=chr19_GL949752v1_alt,length=987100>
+##contig=<ID=chr6_KI270758v1_alt,length=76752>
+##contig=<ID=chr19_GL949753v2_alt,length=796479>
+##contig=<ID=chr19_KI270938v1_alt,length=1066800>
+##contig=<ID=chr19_KI270882v1_alt,length=248807>
+##contig=<ID=chr19_KI270883v1_alt,length=170399>
+##contig=<ID=chr19_KI270884v1_alt,length=157053>
+##contig=<ID=chr19_KI270885v1_alt,length=171027>
+##contig=<ID=chr19_KI270886v1_alt,length=204239>
+##contig=<ID=chr19_KI270887v1_alt,length=209512>
+##contig=<ID=chr19_KI270888v1_alt,length=155532>
+##contig=<ID=chr19_KI270889v1_alt,length=170698>
+##contig=<ID=chr19_KI270890v1_alt,length=184499>
+##contig=<ID=chr19_KI270891v1_alt,length=170680>
+##contig=<ID=chr19_KI270914v1_alt,length=205194>
+##contig=<ID=chr19_KI270915v1_alt,length=170665>
+##contig=<ID=chr19_KI270916v1_alt,length=184516>
+##contig=<ID=chr19_KI270917v1_alt,length=190932>
+##contig=<ID=chr19_KI270918v1_alt,length=123111>
+##contig=<ID=chr19_KI270919v1_alt,length=170701>
+##contig=<ID=chr19_KI270920v1_alt,length=198005>
+##contig=<ID=chr19_KI270921v1_alt,length=282224>
+##contig=<ID=chr19_KI270922v1_alt,length=187935>
+##contig=<ID=chr19_KI270923v1_alt,length=189352>
+##contig=<ID=chr19_KI270929v1_alt,length=186203>
+##contig=<ID=chr19_KI270930v1_alt,length=200773>
+##contig=<ID=chr19_KI270931v1_alt,length=170148>
+##contig=<ID=chr19_KI270932v1_alt,length=215732>
+##contig=<ID=chr19_KI270933v1_alt,length=170537>
+##contig=<ID=chr19_GL000209v2_alt,length=177381>
+##contig=<ID=chrM,length=16569>
+##source=ApplyVQSR
+##source=GenomicsDBImport
+##source=GenotypeGVCFs
+##source=HaplotypeCaller
+##source=VariantFiltration
+##SnpEffVersion="4.3i (build 2016-12-15 22:33), by Pablo Cingolani"
+##SnpEffCmd="SnpEff  -csvStats snpEff_summary.csv grch38_p13 20230310_genotypes.recal.snp.vcf.gz "
+##INFO=<ID=ANN,Number=.,Type=String,Description="Functional annotations: 'Allele | Annotation | Annotation_Impact | Gene_Name | Gene_ID | Feature_Type | Feature_ID | Transcript_BioType | Rank | HGVS.c | HGVS.p | cDNA.pos / cDNA.length | CDS.pos / CDS.length | AA.pos / AA.length | Distance | ERRORS / WARNINGS / INFO' ">
+##INFO=<ID=LOF,Number=.,Type=String,Description="Predicted loss of function effects for this variant. Format: 'Gene_Name | Gene_ID | Number_of_transcripts_in_gene | Percent_of_transcripts_affected' ">
+##INFO=<ID=NMD,Number=.,Type=String,Description="Predicted nonsense mediated decay effects for this variant. Format: 'Gene_Name | Gene_ID | Number_of_transcripts_in_gene | Percent_of_transcripts_affected' ">
+##SnpSiftVersion="SnpSift 4.3i (build 2016-12-15 22:33), by Pablo Cingolani"
+##SnpSiftCmd="SnpSift annotate -id -tabix /home/projects/cfb/cs_nsri_filipinome/resources/Homo_sapiens_assembly38.dbsnp138.vcf.gz 20230310_genotypes.snpeff.vcf"
+##INFO=<ID=CDA,Number=0,Type=Flag,Description="Variation is interrogated in a clinical diagnostic assay">
+##INFO=<ID=S3D,Number=0,Type=Flag,Description="Has 3D structure - SNP3D table">
+##INFO=<ID=KGPilot123,Number=0,Type=Flag,Description="1000 Genome discovery all pilots 2010(1,2,3)">
+##INFO=<ID=R3,Number=0,Type=Flag,Description="In 3' gene region FxnCode = 13">
+##INFO=<ID=R5,Number=0,Type=Flag,Description="In 5' gene region FxnCode = 15">
+##INFO=<ID=CLNORIGIN,Number=.,Type=String,Description="Allele Origin. One or more of the following values may be added: 0 - unknown; 1 - germline; 2 - somatic; 4 - inherited; 8 - paternal; 16 - maternal; 32 - de-novo; 64 - biparental; 128 - uniparental; 256 - not-tested; 512 - tested-inconclusive; 1073741824 - other">
+##INFO=<ID=OTHERKG,Number=0,Type=Flag,Description="non-1000 Genome submission">
+##INFO=<ID=CLNSRC,Number=.,Type=String,Description="Variant Clinical Chanels">
+##INFO=<ID=RS,Number=1,Type=Integer,Description="dbSNP ID (i.e. rs number)">
+##INFO=<ID=RV,Number=0,Type=Flag,Description="RS orientation is reversed">
+##INFO=<ID=CFL,Number=0,Type=Flag,Description="Has Assembly conflict. This is for weight 1 and 2 variant that maps to different chromosomes on different assemblies.">
+##INFO=<ID=GNO,Number=0,Type=Flag,Description="Genotypes available. The variant has individual genotype (in SubInd table).">
+##INFO=<ID=VLD,Number=0,Type=Flag,Description="Is Validated.  This bit is set if the variant has 2+ minor allele count based on frequency or genotype data.">
+##INFO=<ID=ASP,Number=0,Type=Flag,Description="Is Assembly specific. This is set if the variant only maps to one assembly">
+##INFO=<ID=ASS,Number=0,Type=Flag,Description="In acceptor splice site FxnCode = 73">
+##INFO=<ID=REF,Number=0,Type=Flag,Description="Has reference A coding region variation where one allele in the set is identical to the reference sequence. FxnCode = 8">
+##INFO=<ID=U3,Number=0,Type=Flag,Description="In 3' UTR Location is in an untranslated region (UTR). FxnCode = 53">
+##INFO=<ID=U5,Number=0,Type=Flag,Description="In 5' UTR Location is in an untranslated region (UTR). FxnCode = 55">
+##INFO=<ID=NOC,Number=0,Type=Flag,Description="Contig allele not present in variant allele list. The reference sequence allele at the mapped position is not present in the variant allele list, adjusted for orientation.">
+##INFO=<ID=SYN,Number=0,Type=Flag,Description="Has synonymous A coding region variation where one allele in the set does not change the encoded amino acid. FxnCode = 3">
+##INFO=<ID=VC,Number=1,Type=String,Description="Variation Class">
+##INFO=<ID=NOV,Number=0,Type=Flag,Description="Rs cluster has non-overlapping allele sets. True when rs set has more than 2 alleles from different submissions and these sets share no alleles in common.">
+##INFO=<ID=KGValidated,Number=0,Type=Flag,Description="1000 Genome validated">
+##INFO=<ID=KGPROD,Number=0,Type=Flag,Description="Has 1000 Genome submission">
+##INFO=<ID=VP,Number=1,Type=String,Description="Variation Property.  Documentation is at ftp://ftp.ncbi.nlm.nih.gov/snp/specs/dbSNP_BitField_latest.pdf">
+##INFO=<ID=CLNDBN,Number=.,Type=String,Description="Variant disease name">
+##INFO=<ID=G5,Number=0,Type=Flag,Description=">5% minor allele frequency in 1+ populations">
+##INFO=<ID=CLNHGVS,Number=.,Type=String,Description="Variant names from HGVS.    The order of these variants corresponds to the order of the info in the other clinical  INFO tags.">
+##INFO=<ID=RSPOS,Number=1,Type=Integer,Description="Chr position reported in dbSNP">
+##INFO=<ID=HD,Number=0,Type=Flag,Description="Marker is on high density genotyping kit (50K density or greater).  The variant may have phenotype associations present in dbGaP.">
+##INFO=<ID=OTH,Number=0,Type=Flag,Description="Has other variant with exactly the same set of mapped positions on NCBI refernce assembly.">
+##INFO=<ID=WTD,Number=0,Type=Flag,Description="Is Withdrawn by submitter If one member ss is withdrawn by submitter, then this bit is set.  If all member ss' are withdrawn, then the rs is deleted to SNPHistory">
+##INFO=<ID=dbSNPBuildID,Number=1,Type=Integer,Description="First dbSNP Build for RS">
+##INFO=<ID=SLO,Number=0,Type=Flag,Description="Has SubmitterLinkOut - From SNP->SubSNP->Batch.link_out">
+##INFO=<ID=NSF,Number=0,Type=Flag,Description="Has non-synonymous frameshift A coding region variation where one allele in the set changes all downstream amino acids. FxnClass = 44">
+##INFO=<ID=CLNSIG,Number=.,Type=String,Description="Variant Clinical Significance, 0 - unknown, 1 - untested, 2 - non-pathogenic, 3 - probable-non-pathogenic, 4 - probable-pathogenic, 5 - pathogenic, 6 - drug-response, 7 - histocompatibility, 255 - other">
+##INFO=<ID=NSN,Number=0,Type=Flag,Description="Has non-synonymous nonsense A coding region variation where one allele in the set changes to STOP codon (TER). FxnClass = 41">
+##INFO=<ID=NSM,Number=0,Type=Flag,Description="Has non-synonymous missense A coding region variation where one allele in the set changes protein peptide. FxnClass = 42">
+##INFO=<ID=CLNALLE,Number=.,Type=Integer,Description="Variant alleles from REF or ALT columns.  0 is REF, 1 is the first ALT allele, etc.  This is used to match alleles with other corresponding clinical (CLN) INFO tags.  A value of -1 indicates that no allele was found to match a corresponding HGVS allele name.">
+##INFO=<ID=G5A,Number=0,Type=Flag,Description=">5% minor allele frequency in each and all populations">
+##INFO=<ID=COMMON,Number=1,Type=Integer,Description="RS is a common SNP.  A common SNP is one that has at least one 1000Genomes population with a minor allele of frequency >= 1% and for which 2 or more founders contribute to that minor allele frequency.">
+##INFO=<ID=PH3,Number=0,Type=Flag,Description="HAP_MAP Phase 3 genotyped: filtered, non-redundant">
+##INFO=<ID=TPA,Number=0,Type=Flag,Description="Provisional Third Party Annotation(TPA) (currently rs from PHARMGKB who will give phenotype data)">
+##INFO=<ID=WGT,Number=1,Type=Integer,Description="Weight, 00 - unmapped, 1 - weight 1, 2 - weight 2, 3 - weight 3 or more">
+##INFO=<ID=MTP,Number=0,Type=Flag,Description="Microattribution/third-party annotation(TPA:GWAS,PAGE)">
+##INFO=<ID=CLNDSDB,Number=.,Type=String,Description="Variant disease database name">
+##INFO=<ID=CLNACC,Number=.,Type=String,Description="Variant Accession and Versions">
+##INFO=<ID=LSD,Number=0,Type=Flag,Description="Submitted from a locus-specific database">
+##INFO=<ID=DSS,Number=0,Type=Flag,Description="In donor splice-site FxnCode = 75">
+##INFO=<ID=CAF,Number=.,Type=String,Description="An ordered, comma delimited list of allele frequencies based on 1000Genomes, starting with the reference allele followed by alternate alleles as ordered in the ALT column. Where a 1000Genomes alternate allele is not in the dbSNPs alternate allele set, the allele is added to the ALT column.  The minor allele is the second largest value in the list, and was previuosly reported in VCF as the GMAF.  This is the GMAF reported on the RefSNP and EntrezSNP pages and VariationReporter">
+##INFO=<ID=MUT,Number=0,Type=Flag,Description="Is mutation (journal citation, explicit fact): a low frequency variation that is cited in journal and other reputable sources">
+##INFO=<ID=KGPhase1,Number=0,Type=Flag,Description="1000 Genome phase 1 (incl. June Interim phase 1)">
+##INFO=<ID=SAO,Number=1,Type=Integer,Description="Variant Allele Origin: 0 - unspecified, 1 - Germline, 2 - Somatic, 3 - Both">
+##INFO=<ID=GENEINFO,Number=1,Type=String,Description="Pairs each of gene symbol:gene id.  The gene symbol and id are delimited by a colon (:) and each pair is delimited by a vertical bar (|)">
+##INFO=<ID=CLNDSDBID,Number=.,Type=String,Description="Variant disease database ID">
+##INFO=<ID=INT,Number=0,Type=Flag,Description="In Intron FxnCode = 6">
+##INFO=<ID=OM,Number=0,Type=Flag,Description="Has OMIM/OMIA">
+##INFO=<ID=CLNSRCID,Number=.,Type=String,Description="Variant Clinical Channel IDs">
+##INFO=<ID=PMC,Number=0,Type=Flag,Description="Links exist to PubMed Central article">
+##INFO=<ID=SSR,Number=1,Type=Integer,Description="Variant Suspect Reason Codes (may be more than one value added together) 0 - unspecified, 1 - Paralog, 2 - byEST, 4 - oldAlign, 8 - Para_EST, 16 - 1kg_failed, 1024 - other">
+##INFO=<ID=PM,Number=0,Type=Flag,Description="Variant is Precious(Clinical,Pubmed Cited)">
+##SnpSiftCmd="SnpSift annotate -info AFR_AF,AMR_AF,EUR_AF,SAS_AF,EAS_AF /home/projects/cfb/cs_nsri_filipinome/reference/1000G.phase3.integrated.sites_only.no_MATCHED_REV.hg38.vcf 20230310_genotypes.dbsnp.vcf"
+##INFO=<ID=AMR_AF,Number=A,Type=Float,Description="Allele frequency in the AMR populations calculated from AC and AN, in the range (0,1)">
+##INFO=<ID=AFR_AF,Number=A,Type=Float,Description="Allele frequency in the AFR populations calculated from AC and AN, in the range (0,1)">
+##INFO=<ID=EAS_AF,Number=A,Type=Float,Description="Allele frequency in the EAS populations calculated from AC and AN, in the range (0,1)">
+##INFO=<ID=EUR_AF,Number=A,Type=Float,Description="Allele frequency in the EUR populations calculated from AC and AN, in the range (0,1)">
+##INFO=<ID=SAS_AF,Number=A,Type=Float,Description="Allele frequency in the SAS populations calculated from AC and AN, in the range (0,1)">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	6323	6329	6336	6350	6366	6415	6416	6417	6418	6424	6425	6441	6442	6443	6450	6453	6454	6459	6460	6462	6463	6465	6466	6468	6475	6476	6477	6485	6493	6508	6531	6532	6533	6534	6537	6538	6546	6547	6561	6563	6576	6581	6582	6583	6609	6611	6615	6619	6624	6630	6635	6642	6658	6659	6661	6664	6667	6676	6692	6695	6698	6699	6707	6708	6719	6720	6725	6726	6728	6735	6736	6737	6738	6743	6744	6745	6746	6868	6903	6911	6931	6944	6945	6946	6966	6991	6992	6993	7010	7043	7054	7084	7118	7148	7190	7258	7281	7314	7339	7396	7455	7474	7539	7568	7656	7657	7658	7698	7812	7837	7914	7924	7944	7959	7967	7993	7994	8002	8035	8036	8037	8596	8606	8655	8665	8712	8720	8721	8722	8730	8733	8824	9011	9012	9013	9014	9016	9020	9022	9023	9028	9031	9034	9070	9071	9072	9074	9075	9076	9077	9078	9079	9080	9081	9083	9091	9092	9093	9094	9193	9195	9196	9197	9202	9203	9205	9206	9209	9210	9213	9241	9242	9244	9252	9253	9255	9313	9314	9315	9316	9317	9318	9319	9320	9321	9322	9323	9324	9326	9327	9328	9329	9330	9331	9332	9333	9334	9335	9337	9338	9342	9344	9345	9346	9349	9350	9351	9352	9353	9356	9357	9358	9359	9360	9361	9362	9363	9365	9366	9367	9368	9369	9371	9372	9373	9414	9418	9419	9420	9421	9422	9425	9426	9427	9428	9429	9430	9444	9445	9446	9447	9450	9451	9452	9453	9454	9455	9456
+chr17	3715521	rs2737126	C	T,G	60767	PASS	.	GT:AD:DP:GQ:PL	0/1:12,7,0:19:99:191,0,251,225,272,497	0/0:19,0,0:19:51:0,51,765,51,765,765	0/1:10,8,0:18:99:259,0,146,286,170,456	0/2:9,0,11:20:99:319,344,508,0,164,131	0/0:21,0,0:21:41:0,41,478,41,478,478	0/1:9,9,0:18:99:267,0,105,292,132,423	0/0:17,0,0:17:51:0,51,471,51,471,471	0/0:18,0,0:18:54:0,54,685,54,685,685	0/1:10,9,1:20:99:293,0,225,322,252,574	1/1:0,20,0:20:60:695,60,0,695,60,695	0/1:10,7,0:17:99:226,0,168,253,189,442	0/1:12,4,0:16:99:102,0,162,135,174,308	0/1:6,16,0:22:18:487,0,18,503,67,570	0/0:21,0,0:21:60:0,60,900,60,900,900	0/0:20,0,0:20:51:0,51,765,51,765,765	0/1:7,12,0:19:99:380,0,127,400,163,563	1/1:0,7,0:7:21:264,21,0,264,21,264	0/0:9,0,0:9:21:0,21,315,21,315,315	0/0:11,0,0:11:33:0,33,356,33,356,356	0/1:5,9,1:15:54:289,0,54,303,81,384	0/1:5,3,1:9:74:88,0,74,101,83,185	0/0:10,0,0:10:30:0,30,253,30,253,253	0/0:7,0,0:7:0:0,0,21,0,21,21	1/1:0,10,0:10:30:353,30,0,353,30,353	1/1:0,16,1:17:48:607,48,0,607,48,607	0/0:16,0,0:16:45:0,45,675,45,675,675	0/1:3,5,0:8:80:161,0,80,170,95,265	0/1:5,5,0:10:42:167,0,42,180,57,236	0/1:1,2,2:5:1:66,0,1,69,7,75	0/0:19,0,0:19:56:0,56,495,56,495,495	0/0:9,0,0:9:27:0,27,238,27,238,238	0/1:3,4,0:7:55:125,0,55,134,67,202	0/0:8,0,0:8:24:0,24,208,24,208,208	0/0:6,0,0:6:9:0,9,135,9,135,135	0/0:12,0,0:12:36:0,36,302,36,302,302	0/0:7,0,0:7:21:0,21,236,21,236,236	0/0:9,0,0:9:27:0,27,257,27,257,257	0/0:8,0,0:8:24:0,24,238,24,238,238	0/1:14,9,0:23:99:288,0,318,328,345,673	0/0:20,0,0:20:60:0,60,537,60,537,537	0/1:12,6,0:18:99:163,0,209,197,227,424	0/1:10,12,0:22:99:365,0,202,394,238,632	0/1:8,8,1:17:99:258,0,105,280,129,409	1/1:0,17,0:17:51:657,51,0,657,51,657	0/1:14,15,0:29:99:469,0,115,506,160,666	0/1:10,12,2:24:99:338,0,173,366,208,575	0/2:6,0,9:15:86:256,273,386,0,113,86	0/2:7,0,9:16:88:257,276,391,0,115,88	0/0:30,0,0:30:87:0,87,1305,87,1305,1305	0/2:7,0,6:13:69:166,184,272,0,87,69	0/1:8,11,0:19:99:330,0,102,352,135,487	0/0:22,0,0:22:66:0,66,740,66,740,740	0/2:5,0,8:13:82:224,238,344,0,106,82	0/2:12,0,11:23:99:294,326,494,0,168,135	0/0:15,0,0:15:45:0,45,370,45,370,370	0/2:8,0,8:16:99:241,263,386,0,123,99	0/1:5,5,0:10:99:130,0,117,145,132,277	0/2:5,0,6:11:88:179,193,300,0,106,88	0/0:12,0,0:12:36:0,36,334,36,334,334	2/2:0,0,6:6:18:210,210,210,18,18,0	0/2:4,0,4:8:91:110,122,225,0,103,91	1/1:0,10,0:10:30:321,30,0,321,30,321	1/1:0,12,1:13:36:436,36,0,436,36,436	0/0:8,0,0:8:24:0,24,173,24,173,173	0/0:8,0,0:8:21:0,21,315,21,315,315	0/0:24,0,0:24:72:0,72,651,72,651,651	0/2:20,0,9:29:99:228,283,641,0,358,331	0/2:14,0,7:21:99:169,207,435,0,227,206	0/0:8,0,0:8:24:0,24,192,24,192,192	0/1:9,12,1:22:99:380,0,137,405,173,577	0/0:17,0,0:17:45:0,45,675,45,675,675	0/1:9,9,0:18:99:242,0,106,267,133,400	0/0:28,0,0:28:80:0,80,699,80,699,699	0/2:8,0,6:14:93:166,187,299,0,111,93	0/0:10,0,0:10:30:0,30,231,30,231,231	0/1:9,13,0:22:99:389,0,133,414,172,585	0/1:8,8,0:16:99:238,0,99,260,123,383	0/0:16,0,0:16:45:0,45,675,45,675,675	0/0:17,0,0:17:45:0,45,675,45,675,675	0/0:14,0,0:14:42:0,42,559,42,559,559	0/0:10,0,0:10:30:0,30,220,30,220,220	0/1:7,3,0:10:87:87,0,157,107,166,273	0/0:14,0,0:14:39:0,39,585,39,585,585	0/0:8,0,0:8:24:0,24,293,24,293,293	0/1:12,12,0:24:99:401,0,214,435,250,685	0/0:1,0,0:1:3:0,3,20,3,20,20	0/1:3,4,0:7:33:122,0,33,130,45,175	0/2:2,0,2:4:33:58,64,102,0,39,33	0/1:2,2,0:4:8:64,0,8,70,14,83	0/1:2,1,0:3:30:30,0,63,36,66,101	0/0:6,0,0:6:15:0,15,225,15,225,225	0/0:5,0,0:5:15:0,15,129,15,129,129	0/0:20,0,0:20:60:0,60,686,60,686,686	0/0:21,0,0:21:57:0,57,855,57,855,855	0/1:3,2,0:5:39:59,0,39,68,45,112	0/0:7,0,0:7:21:0,21,193,21,193,193	0/1:2,3,0:5:5:72,0,5,77,14,91	0/0:2,0,0:2:6:0,6,36,6,36,36	0/0:17,0,0:17:48:0,48,720,48,720,720	1/1:0,12,0:12:36:426,36,0,426,36,426	1/1:0,4,0:4:12:145,12,0,145,12,145	0/1:1,2,0:3:1:62,0,1,65,7,71	0/0:3,0,0:3:9:0,9,52,9,52,52	0/0:3,0,0:3:9:0,9,78,9,78,78	0/0:5,0,0:5:15:0,15,186,15,186,186	0/0:8,0,0:8:24:0,24,166,24,166,166	0/0:21,0,0:21:54:0,54,810,54,810,810	0/0:6,0,0:6:18:0,18,161,18,161,161	./.:0,0,0:0:.:0,0,0,0,0,0	0/0:4,0,0:4:0:0,0,44,0,44,44	1/2:0,2,2:4:62:139,69,62,71,0,64	0/0:4,0,0:4:0:0,0,51,0,51,51	1/1:0,5,0:5:15:188,15,0,188,15,188	0/0:7,0,0:7:21:0,21,127,21,127,127	1/1:1,14,0:15:35:498,35,0,501,42,508	0/1:5,5,0:10:99:109,0,100,123,114,237	1/2:0,2,2:4:54:133,61,54,73,0,67	0/0:14,0,0:14:41:0,41,379,41,379,379	1/1:0,10,0:10:30:381,30,0,381,30,381	0/1:4,7,0:11:86:245,0,86,256,107,364	1/1:0,5,0:5:15:194,15,0,194,15,194	./.:0,0,0:0:.:0,0,0,0,0,0	./.:0,0,0:0:.:0,0,0,0,0,0	./.:0,0,0:0:.:0,0,0,0,0,0	./.:0,0,0:0:.:0,0,0,0,0,0	0/0:1,0,0:1:3:0,3,14,3,14,14	./.:0,0,0:0:.:0,0,0,0,0,0	./.:0,0,0:0:.:0,0,0,0,0,0	0/2:7,0,5:12:99:134,154,302,0,148,133	./.:0,0,0:0:.:0,0,0,0,0,0	0/0:9,0,0:9:27:0,27,317,27,317,317	0/2:2,0,3:5:29:93,98,136,0,38,29	0/0:20,0,0:20:60:0,60,768,60,768,768	0/0:20,0,0:20:57:0,57,855,57,855,855	0/0:23,0,0:23:63:0,63,945,63,945,945	0/1:18,17,0:35:99:532,0,338,582,389,971	0/2:6,0,7:13:99:197,214,352,0,138,117	0/1:7,2,0:9:53:53,0,120,73,126,199	0/0:19,0,0:19:54:0,54,810,54,810,810	0/0:31,0,0:31:90:0,90,911,90,911,911	1/1:0,38,0:38:99:1393,114,0,1393,114,1393	0/1:17,16,0:33:99:535,0,150,580,198,778	0/0:16,0,0:16:45:0,45,675,45,675,675	0/1:11,12,0:23:99:373,0,166,403,203,606	0/1:11,18,0:29:99:597,0,115,627,169,795	0/0:26,0,0:26:72:0,72,1080,72,1080,1080	0/1:7,14,0:21:81:460,0,81,479,123,602	0/1:12,11,0:23:99:347,0,192,380,225,606	0/0:26,0,0:26:75:0,75,969,75,969,969	1/1:0,23,1:24:69:878,69,0,878,69,878	1/1:0,29,0:29:87:1080,87,0,1080,87,1080	0/0:28,0,0:28:81:0,81,745,81,745,745	0/2:8,1,12:21:95:368,390,521,0,131,95	0/1:18,13,0:31:99:375,0,321,425,360,785	0/1:17,11,0:28:99:331,0,240,377,273,650	0/0:28,0,0:28:81:0,81,1215,81,1215,1215	1/1:0,26,0:26:78:956,78,0,956,78,956	0/1:9,8,0:17:99:225,0,112,249,136,385	0/1:17,15,0:32:99:470,0,286,517,331,848	0/0:20,0,0:20:60:0,60,586,60,586,586	0/1:10,14,0:24:99:459,0,131,487,174,660	0/0:17,0,0:17:48:0,48,720,48,720,720	1/1:0,27,0:27:81:994,81,0,994,81,994	0/0:37,0,0:37:99:0,99,1485,99,1485,1485	0/0:33,0,0:33:90:0,90,1350,90,1350,1350	0/0:28,0,0:28:75:0,75,1125,75,1125,1125	0/0:33,0,0:33:75:0,75,1125,75,1125,1125	0/0:33,0,0:33:99:0,99,1285,99,1285,1285	0/1:13,19,0:32:99:664,0,215,700,272,972	0/0:28,0,0:28:81:0,81,1215,81,1215,1215	0/1:14,10,0:24:99:296,0,200,334,230,564	1/1:0,15,0:15:45:545,45,0,545,45,545	1/1:0,29,0:29:87:1070,87,0,1070,87,1070	1/1:0,27,0:27:81:1027,81,0,1027,81,1027	1/1:0,14,0:14:42:520,42,0,520,42,520	2/2:0,0,30:30:90:1011,1011,1011,90,90,0	0/1:11,13,0:24:99:435,0,183,466,222,688	0/1:9,4,0:13:93:116,0,93,140,105,245	0/0:23,0,0:23:63:0,63,601,63,601,601	0/0:26,0,0:26:72:0,72,1080,72,1080,1080	1/2:0,16,11:27:99:861,339,291,522,0,489	1/1:0,14,0:14:42:515,42,0,515,42,515	0/1:15,8,0:23:99:246,0,302,288,326,614	0/0:8,0,0:8:24:0,24,294,24,294,294	0/0:28,0,0:28:81:0,81,1215,81,1215,1215	0/1:11,10,0:21:99:306,0,166,337,197,533	0/2:9,0,11:20:99:333,359,570,0,211,178	0/1:16,8,0:24:99:245,0,294,289,318,607	0/1:14,12,0:26:99:353,0,255,392,291,683	1/1:0,14,0:14:42:520,42,0,520,42,520	0/1:16,17,0:33:99:550,0,215,594,266,860	1/1:0,36,0:36:99:1309,108,0,1309,108,1309	0/0:31,0,0:31:90:0,90,812,90,812,812	0/0:31,0,0:31:87:0,87,1305,87,1305,1305	0/0:22,0,0:22:63:0,63,742,63,742,742	0/1:13,12,0:25:99:388,0,159,424,195,619	0/0:21,0,0:21:60:0,60,614,60,614,614	0/1:21,15,0:36:99:495,0,377,553,422,975	0/0:25,0,0:25:73:0,73,855,73,855,855	0/1:10,9,0:19:99:255,0,234,284,261,545	0/1:16,7,0:23:99:200,0,272,244,293,537	0/1:21,11,0:32:99:299,0,391,358,424,782	0/1:12,13,0:25:99:431,0,168,464,208,671	0/0:21,0,0:21:62:0,62,528,62,528,528	0/1:9,5,0:14:99:140,0,114,165,129,294	0/0:27,0,0:27:81:0,81,745,81,745,745	0/1:3,10,0:13:41:324,0,41,333,70,403	0/1:4,10,0:14:45:337,0,45,349,75,424	0/1:10,7,0:17:99:183,0,201,211,221,433	0/0:28,0,0:28:72:0,72,1080,72,1080,1080	1/1:0,23,0:23:69:849,69,0,849,69,849	0/1:6,3,1:10:82:82,0,121,99,130,229	0/1:6,8,0:14:90:262,0,90,279,114,393	0/0:39,0,0:39:99:0,101,1357,101,1357,1357	1/1:0,15,0:15:45:566,45,0,566,45,566	0/1:14,10,0:24:99:255,0,234,294,264,558	1/1:0,17,0:17:51:618,51,0,618,51,618	1/1:0,30,0:30:89:1082,89,0,1082,89,1082	1/1:0,20,0:20:60:730,60,0,730,60,730	0/1:11,13,0:24:99:430,0,162,460,202,662	0/0:16,0,0:16:48:0,48,559,48,559,559	0/0:30,0,0:30:90:0,90,732,90,732,732	1/2:0,15,13:28:99:901,426,382,475,0,435	0/1:8,13,0:21:95:458,0,95,480,134,614	0/1:21,19,0:40:99:600,0,363,658,420,1078	0/0:4,0,0:4:0:0,0,49,0,49,49	0/1:17,17,0:34:99:537,0,194,584,246,829	0/1:16,17,0:33:99:484,0,265,529,316,845	0/1:11,14,0:25:88:467,0,88,496,130,626	1/1:0,26,0:26:78:959,78,0,959,78,959	1/1:0,33,0:33:98:1166,98,0,1166,98,1166	1/1:0,26,0:26:78:963,78,0,963,78,963	1/1:0,44,0:44:99:1613,131,0,1613,131,1613	1/1:0,27,0:27:81:1056,81,0,1056,81,1056	0/1:26,22,0:48:99:647,0,418,719,484,1204	1/1:0,26,0:26:78:1003,78,0,1003,78,1003	1/1:0,41,0:41:99:1545,123,0,1545,123,1545	0/1:5,14,0:19:62:461,0,62,476,104,580	1/1:0,13,0:13:39:476,39,0,476,39,476	0/2:11,0,6:17:99:164,194,390,0,196,178	0/0:16,0,0:16:48:0,48,375,48,375,375	0/1:10,7,0:17:99:206,0,217,235,238,473	0/1:9,12,0:21:99:389,0,145,414,181,595	1/1:0,28,0:28:84:1035,84,0,1035,84,1035	0/0:23,0,0:23:66:0,66,896,66,896,896	0/0:21,0,0:21:60:0,60,787,60,787,787	0/0:16,0,0:16:45:0,45,675,45,675,675	0/0:24,0,0:24:66:0,66,990,66,990,990
+chr17	9794927	rs4791868	G	C	105081	PASS	.	GT:AD:DP:GQ:PL	0/1:7,14:21:99:434,0,189	0/1:6,5:11:99:132,0,187	0/1:6,9:15:99:250,0,158	0/1:17,19:36:99:511,0,475	0/1:12,6:18:99:144,0,331	1/1:0,17:18:51:575,51,0	1/1:0,18:18:54:627,54,0	1/1:0,15:15:45:454,45,0	1/1:0,20:20:60:647,60,0	1/1:0,17:17:51:570,51,0	1/1:0,20:20:60:627,60,0	0/1:20,16:36:99:397,0,532	0/1:11,11:22:99:260,0,317	1/1:0,19:19:57:614,57,0	1/1:0,25:25:75:795,75,0	0/0:20,0:20:60:0,60,651	1/1:0,7:7:21:233,21,0	1/1:0,8:8:24:250,24,0	1/1:0,17:17:51:547,51,0	0/1:6,4:11:85:85,0,164	1/1:0,5:5:15:166,15,0	0/1:3,5:8:80:141,0,80	0/1:7,6:14:99:156,0,202	1/1:0,7:7:21:238,21,0	0/1:15,8:23:99:180,0,482	0/1:11,7:18:99:181,0,336	0/0:4,0:4:12:0,12,139	0/1:3,8:11:76:225,0,76	1/1:0,10:10:30:302,30,0	1/1:0,16:16:48:514,48,0	1/1:0,10:10:30:336,30,0	1/1:0,6:6:18:202,18,0	1/1:0,13:13:39:432,39,0	1/1:0,9:9:27:291,27,0	0/0:11,0:11:30:0,30,450	1/1:0,9:10:27:299,27,0	1/1:0,8:8:24:269,24,0	0/1:3,6:9:69:168,0,69	0/1:10,10:20:99:270,0,280	0/0:23,0:23:69:0,69,739	1/1:0,18:18:54:579,54,0	0/1:11,11:22:99:286,0,290	0/1:10,12:22:99:351,0,295	0/1:7,13:20:99:338,0,192	1/1:0,28:28:84:883,84,0	0/1:14,7:21:99:159,0,391	1/1:0,25:25:75:776,75,0	0/1:18,11:29:99:252,0,514	1/1:0,23:23:69:702,69,0	0/0:27,0:27:75:0,75,1125	0/1:9,13:23:99:336,0,229	0/1:4,12:16:83:269,0,83	1/1:0,25:25:75:791,75,0	1/1:0,18:18:54:534,54,0	1/1:0,19:19:57:609,57,0	1/1:0,22:22:66:694,66,0	1/1:0,10:10:30:336,30,0	0/0:8,0:8:24:0,24,266	1/1:0,6:6:18:193,18,0	0/1:5,6:11:99:157,0,148	1/1:0,15:15:45:493,45,0	0/0:10,0:10:30:0,30,314	0/0:9,0:9:24:0,24,360	0/0:13,0:13:39:0,39,436	1/1:0,14:14:42:457,42,0	0/1:13,9:22:99:230,0,382	1/1:1,17:18:17:520,17,0	1/1:0,17:17:51:542,51,0	1/1:0,17:19:51:553,51,0	0/1:7,9:16:99:203,0,192	0/0:17,0:17:45:0,45,675	0/0:27,0:27:81:0,81,904	0/1:13,11:24:99:277,0,331	0/1:11,12:23:99:281,0,280	0/1:10,9:19:99:224,0,284	0/1:11,9:20:99:225,0,311	1/1:0,21:21:63:631,63,0	1/1:0,17:17:51:552,51,0	0/0:19,0:19:57:0,57,641	0/0:19,0:19:54:0,54,810	1/1:0,14:14:42:467,42,0	0/1:5,9:15:99:244,0,139	1/1:0,17:17:51:586,51,0	0/1:11,6:17:99:145,0,327	1/1:0,22:22:66:753,66,0	1/1:0,3:3:9:74,9,0	1/1:0,7:7:21:241,21,0	./.:1,0:1:.:0,0,0	0/1:2,4:6:50:115,0,50	1/1:0,10:10:30:352,30,0	0/1:1,3:4:24:87,0,24	0/1:2,3:5:28:84,0,28	0/1:7,11:18:99:324,0,185	0/1:12,10:22:99:264,0,366	0/0:6,0:6:18:0,18,193	1/1:0,9:9:27:317,27,0	1/1:0,4:4:12:116,12,0	1/1:0,4:4:12:142,12,0	0/0:20,0:20:60:0,60,698	0/1:8,2:10:37:37,0,242	0/0:6,0:6:18:0,18,197	1/1:0,6:6:18:201,18,0	0/1:7,4:11:99:108,0,201	1/1:0,2:2:6:71,6,0	0/1:3,3:6:78:78,0,87	1/1:0,8:8:24:267,24,0	1/1:0,20:20:60:658,60,0	1/1:0,14:14:42:480,42,0	./.:0,0:0:.:0,0,0	0/0:1,0:1:3:0,3,19	1/1:0,8:8:24:256,24,0	0/0:4,0:4:12:0,12,91	0/1:1,7:8:12:187,0,12	0/0:8,0:8:24:0,24,268	0/1:1,2:3:30:59,0,30	0/0:17,0:17:48:0,48,720	1/1:0,8:8:24:250,24,0	1/1:0,10:10:30:333,30,0	1/1:0,6:6:18:182,18,0	0/0:11,0:11:33:0,33,348	0/1:2,2:4:37:51,0,37	./.:0,0:0:.:0,0,0	./.:0,0:0:.:0,0,0	./.:1,0:1:.:0,0,0	1/1:0,5:5:15:131,15,0	./.:0,0:0:.:0,0,0	./.:0,0:0:.:0,0,0	./.:0,0:0:.:0,0,0	1/1:0,22:22:66:751,66,0	./.:0,0:0:.:0,0,0	./.:2,0:2:.:0,0,0	0/1:8,2:10:36:36,0,224	1/1:0,24:24:72:810,72,0	0/1:18,7:25:99:167,0,563	0/1:13,12:25:99:336,0,378	1/1:0,33:33:99:1154,99,0	1/1:0,19:19:57:648,57,0	0/1:7,5:12:99:137,0,220	0/1:5,14:19:99:377,0,109	1/1:0,41:41:99:1393,123,0	1/1:0,27:28:81:901,81,0	0/1:19,17:36:99:469,0,530	0/1:14,16:31:99:426,0,389	0/1:10,15:25:99:440,0,274	0/1:17,12:29:99:339,0,472	0/1:12,23:35:99:635,0,313	0/1:14,15:29:99:423,0,400	1/1:0,24:24:72:800,72,0	0/1:9,11:20:99:308,0,258	0/1:13,12:25:99:335,0,388	0/0:35,0:35:99:0,99,1353	1/1:0,35:35:99:1209,105,0	0/0:22,0:22:66:0,66,751	0/1:14,15:29:99:431,0,418	1/1:0,40:40:99:1313,120,0	1/1:0,29:29:87:988,87,0	0/1:19,10:29:99:249,0,580	1/1:0,22:22:66:724,66,0	1/1:0,37:38:99:1255,111,0	0/1:11,14:25:99:385,0,284	1/1:0,27:27:81:961,81,0	1/1:0,31:31:93:1052,93,0	1/1:0,36:36:99:1231,108,0	0/0:30,0:30:90:0,90,1045	0/1:12,14:26:99:399,0,365	1/1:0,28:28:84:934,84,0	1/1:0,35:35:99:1245,105,0	1/1:0,30:30:90:1095,90,0	1/1:0,38:38:99:1329,114,0	1/1:0,40:40:99:1348,120,0	1/1:0,38:39:99:1308,114,0	0/1:8,15:23:99:435,0,209	1/1:0,22:22:66:719,66,0	1/1:0,22:22:66:728,66,0	0/1:5,8:13:99:227,0,126	1/1:0,29:29:87:933,87,0	0/1:9,10:19:99:284,0,254	0/1:12,10:22:99:234,0,325	1/1:0,27:27:81:919,81,0	1/1:0,25:25:75:794,75,0	0/1:14,11:25:99:293,0,407	1/1:0,23:23:69:715,69,0	0/1:20,11:31:99:282,0,606	1/1:0,13:13:39:421,39,0	0/1:17,14:31:99:329,0,463	0/1:11,9:20:99:237,0,326	1/1:0,18:19:54:575,54,0	0/0:31,0:31:90:0,90,1350	0/1:13,20:33:99:575,0,343	1/1:0,37:37:99:1201,111,0	0/1:11,16:28:99:466,0,316	0/1:18,19:37:99:545,0,507	0/1:27,22:49:99:628,0,860	1/1:0,37:37:99:1232,111,0	0/1:16,13:29:99:361,0,480	0/0:24,0:24:72:0,72,840	1/1:0,36:36:99:1158,108,0	0/1:12,14:26:99:383,0,360	1/1:0,19:19:57:638,57,0	1/1:0,32:32:96:1049,96,0	1/1:0,37:37:99:1183,111,0	0/1:16,21:37:99:597,0,436	0/1:18,19:37:99:541,0,537	0/1:16,21:37:99:569,0,460	0/1:10,11:21:99:300,0,270	0/1:17,17:34:99:445,0,492	1/1:0,11:11:33:378,33,0	0/1:7,14:21:99:397,0,160	0/1:8,11:19:99:300,0,226	1/1:0,21:21:63:720,63,0	0/0:25,0:25:72:0,72,852	1/1:0,21:21:63:686,63,0	0/0:17,0:17:51:0,51,555	1/1:0,24:24:72:798,72,0	0/1:13,14:29:99:387,0,382	0/1:20,22:42:99:626,0,580	0/0:28,0:28:81:0,81,1017	0/1:15,10:25:99:262,0,427	0/1:16,9:25:99:246,0,510	0/1:9,11:20:99:318,0,260	0/1:15,15:30:99:425,0,445	0/0:36,0:36:99:0,99,1278	0/0:27,0:27:81:0,81,957	0/1:12,15:27:99:449,0,367	0/0:21,0:21:60:0,60,757	0/1:1,5:6:21:131,0,21	0/1:17,21:38:99:599,0,469	1/1:0,37:37:99:1249,111,0	1/1:0,31:31:93:1076,93,0	0/1:12,14:26:99:375,0,317	0/0:39,0:39:99:0,99,1318	1/1:0,34:34:99:1131,102,0	1/1:0,42:42:99:1493,126,0	0/1:12,16:28:99:486,0,345	0/1:22,14:36:99:340,0,599	1/1:0,31:31:93:1090,93,0	1/1:0,34:34:99:1138,102,0	1/1:0,21:21:63:671,63,0	1/1:0,13:13:39:420,39,0	1/1:0,22:22:66:728,66,0	0/0:6,0:6:18:0,18,230	0/1:11,10:21:99:288,0,308	0/0:19,0:19:57:0,57,671	1/1:0,25:25:75:849,75,0	1/1:0,29:29:87:970,87,0	1/1:0,25:25:75:841,75,0	1/1:0,29:30:87:963,87,0	1/1:0,33:33:99:1104,99,0
+chr17	50035563	rs6504633	G	C,T	204449	PASS	.	GT:AD:DP:GQ:PGT:PID:PL:PS	1/2:0,14,14:29:99:.:.:1142,508,443,295,0,220:.	1/2:0,8,12:20:99:.:.:869,429,379,219,0,160:.	1/2:0,12,18:30:99:.:.:1250,644,570,343,0,257:.	1/2:0,7,13:20:64:.:.:842,458,407,123,0,64:.	1|1:0,19,0:19:57:1|1:50035563_G_C:800,57,0,800,57,800:50035563	1/2:0,10,5:15:99:.:.:613,185,143,219,0,180:.	1/2:0,14,8:22:99:.:.:871,303,244,248,0,187:.	1/2:0,13,9:22:99:.:.:927,312,252,289,0,226:.	1/2:0,13,10:24:99:.:.:942,382,328,272,0,210:.	1|1:0,16,0:16:48:1|1:50035563_G_C:694,48,0,694,48,694:50035563	2|2:0,0,18:18:54:1|1:50035563_G_T:804,804,804,54,54,0:50035563	1|1:0,27,0:27:81:1|1:50035563_G_C:1205,81,0,1205,81,1205:50035563	2|2:0,0,20:20:60:1|1:50035563_G_T:872,872,872,60,60,0:50035563	2|2:0,0,26:26:78:1|1:50035563_G_T:1140,1140,1140,78,78,0:50035563	1|1:0,18,0:18:54:1|1:50035563_G_C:760,54,0,760,54,760:50035563	1/2:0,11,7:19:99:.:.:747,249,203,308,0,258:.	1/2:0,4,2:6:61:.:.:253,77,61,93,0,76:.	1|1:0,11,0:11:33:1|1:50035563_G_C:484,33,0,484,33,484:50035563	2|2:0,0,5:5:15:1|1:50035563_G_T:205,205,205,15,15,0:50035563	1|1:0,9,1:10:27:1|1:50035563_G_C:405,27,0,405,27,405:50035563	2|2:0,0,8:8:24:1|1:50035563_G_T:360,360,360,24,24,0:50035563	1|1:0,7,0:7:21:1|1:50035563_G_C:304,21,0,304,21,304:50035563	1|1:0,10,0:10:30:1|1:50035563_G_C:432,30,0,432,30,432:50035563	1|1:0,11,0:11:33:1|1:50035563_G_C:495,33,0,495,33,495:50035563	1/2:0,12,7:20:99:.:.:781,267,213,248,0,198:.	1|1:0,19,0:19:57:1|1:50035563_G_C:839,57,0,839,57,839:50035563	1/2:0,6,5:11:99:.:.:442,151,122,191,0,161:.	1/2:0,9,7:16:99:.:.:639,232,189,195,0,153:.	1|1:0,7,0:7:21:1|1:50035563_G_C:312,21,0,312,21,312:50035563	2|2:0,0,14:14:42:1|1:50035563_G_T:621,621,621,42,42,0:50035563	1|1:0,15,0:15:44:1|1:50035563_G_C:604,44,0,604,44,604:50035563	2|2:0,0,17:17:51:1|1:50035563_G_T:747,747,747,51,51,0:50035563	2|2:0,0,17:17:51:1|1:50035563_G_T:765,765,765,51,51,0:50035563	2|2:0,0,5:5:15:1|1:50035563_G_T:207,207,207,15,15,0:50035563	2|2:0,0,10:10:30:1|1:50035563_G_T:450,450,450,30,30,0:50035563	2|2:0,0,8:8:24:1|1:50035563_G_T:346,346,346,24,24,0:50035563	1/2:0,3,11:14:43:.:.:580,385,356,84,0,43:.	2|2:0,0,13:13:39:1|1:50035563_G_T:576,576,576,39,39,0:50035563	1|1:0,18,0:18:54:1|1:50035563_G_C:787,54,0,787,54,787:50035563	1/2:0,19,14:33:99:.:.:1299,512,427,410,0,330:.	1|1:0,20,0:20:60:1|1:50035563_G_C:883,60,0,883,60,883:50035563	1/2:0,9,19:28:60:.:.:1177,615,540,143,0,60:.	1/2:0,17,9:27:99:.:.:1082,341,264,393,0,323:.	1|1:0,19,0:19:57:1|1:50035563_G_C:830,57,0,830,57,830:50035563	1/2:0,9,13:22:99:.:.:962,470,409,190,0,123:.	2|2:0,0,20:20:60:1|1:50035563_G_T:872,872,872,60,60,0:50035563	1/2:0,15,11:26:99:.:.:1049,395,325,379,0,312:.	2|2:0,0,16:16:48:1|1:50035563_G_T:709,709,709,48,48,0:50035563	1|1:0,27,0:27:81:1|1:50035563_G_C:1137,81,0,1137,81,1137:50035563	1/2:0,10,10:20:99:.:.:787,342,290,199,0,144:.	2|2:0,0,18:18:54:1|1:50035563_G_T:782,782,782,54,54,0:50035563	2|2:0,0,22:22:66:1|1:50035563_G_T:957,957,957,66,66,0:50035563	1|1:0,23,0:23:69:1|1:50035563_G_C:975,69,0,975,69,975:50035563	1/2:0,12,18:30:99:.:.:1270,587,509,269,0,181:.	1|1:0,32,0:32:96:1|1:50035563_G_C:1368,96,0,1368,96,1368:50035563	1/2:0,6,11:17:87:.:.:770,405,358,143,0,87:.	2|2:0,0,8:8:24:1|1:50035563_G_T:360,360,360,24,24,0:50035563	2|2:0,0,9:9:27:1|1:50035563_G_T:405,405,405,27,27,0:50035563	2|2:0,0,9:9:27:1|1:50035563_G_T:405,405,405,27,27,0:50035563	1/2:0,7,6:13:99:.:.:548,221,185,147,0,110:.	1/2:0,5,4:9:63:.:.:367,145,120,90,0,63:.	2|2:0,0,12:12:36:1|1:50035563_G_T:540,540,540,36,36,0:50035563	2|2:0,0,2:2:6:1|1:50035563_G_T:90,90,90,6,6,0:50035563	1/2:0,4,7:11:61:.:.:463,255,227,93,0,61:.	2|2:0,0,5:5:15:1|1:50035563_G_T:225,225,225,15,15,0:50035563	1/2:0,5,11:16:2:.:.:694,375,331,53,0,2:.	1|1:0,25,0:25:75:1|1:50035563_G_C:1081,75,0,1081,75,1081:50035563	1|1:0,24,0:24:72:1|1:50035563_G_C:1059,72,0,1059,72,1059:50035563	1/2:0,15,10:25:99:.:.:1023,374,307,220,0,145:.	2|2:0,0,11:11:33:1|1:50035563_G_T:486,486,486,33,33,0:50035563	1/2:0,4,11:15:25:.:.:669,408,370,72,0,25:.	2|2:0,0,21:21:63:1|1:50035563_G_T:940,940,940,63,63,0:50035563	1/2:0,10,15:25:99:.:.:1048,519,454,220,0,147:.	1|1:0,19,0:19:57:1|1:50035563_G_C:855,57,0,855,57,855:50035563	2|2:0,0,19:19:57:1|1:50035563_G_T:845,845,845,57,57,0:50035563	1/2:0,7,17:24:99:.:.:1021,577,514,172,0,99:.	1/2:0,10,7:17:99:.:.:766,254,201,235,0,183:.	0|2:12,0,11:23:99:0|1:50035563_G_T:410,446,939,0,493,460:50035563	1/2:0,10,13:23:99:.:.:932,477,422,234,0,172:.	1|1:0,28,1:29:83:1|1:50035563_G_C:1152,83,0,1152,83,1152:50035563	1|1:0,10,0:10:30:1|1:50035563_G_C:450,30,0,450,30,450:50035563	2|2:0,0,9:9:27:1|1:50035563_G_T:397,397,397,27,27,0:50035563	1/2:0,12,9:21:99:.:.:876,308,252,286,0,228:.	1/2:0,10,6:16:99:.:.:674,224,180,255,0,210:.	1/2:0,6,5:11:83:.:.:445,190,165,111,0,83:.	0|1:3,2,0:5:75:0|1:50035563_G_C:75,0,120,84,126,210:50035563	1/2:0,4,3:7:48:.:.:332,110,89,71,0,48:.	2|2:0,0,4:4:12:1|1:50035563_G_T:171,171,171,12,12,0:50035563	1/2:0,4,3:7:96:.:.:330,117,96,121,0,98:.	1|1:0,3,0:3:9:1|1:50035563_G_C:135,9,0,135,9,135:50035563	1/2:0,4,4:8:97:.:.:336,151,130,119,0,97:.	1|1:0,3,0:3:9:1|1:50035563_G_C:134,9,0,134,9,134:50035563	1|1:0,26,0:26:78:1|1:50035563_G_C:1152,78,0,1152,78,1152:50035563	1/2:0,11,12:23:99:.:.:969,436,378,247,0,181:.	1|1:0,7,0:7:21:1|1:50035563_G_C:315,21,0,315,21,315:50035563	2|2:0,0,9:9:27:1|1:50035563_G_T:405,405,405,27,27,0:50035563	1|1:0,6,0:6:18:1|1:50035563_G_C:225,18,0,225,18,225:50035563	2|2:0,0,4:4:12:1|1:50035563_G_T:175,175,175,12,12,0:50035563	1/2:0,6,13:19:57:.:.:858,496,445,119,0,57:.	1|1:0,9,0:9:27:1|1:50035563_G_C:401,27,0,401,27,401:50035563	2|2:0,0,4:4:12:1|1:50035563_G_T:180,180,180,12,12,0:50035563	./.:0,0,0:0:.:.:.:0,0,0,0,0,0:.	2|2:0,0,2:2:6:1|1:50035563_G_T:90,90,90,6,6,0:50035563	1|1:0,3,0:3:9:1|1:50035563_G_C:135,9,0,135,9,135:50035563	1|1:0,4,0:4:12:1|1:50035563_G_C:170,12,0,170,12,170:50035563	2|2:0,0,9:9:27:1|1:50035563_G_T:383,383,383,27,27,0:50035563	1/2:0,8,12:20:99:.:.:813,418,369,184,0,127:.	1|1:0,4,0:4:12:1|1:50035563_G_C:180,12,0,180,12,180:50035563	./.:0,0,0:0:.:.:.:0,0,0,0,0,0:.	2|2:0,0,4:4:12:1|1:50035563_G_T:180,180,180,12,12,0:50035563	0|1:5,3,0:8:76:0|1:50035563_G_C:76,0,201,91,210,301:50035563	2|2:0,0,5:5:15:1|1:50035563_G_T:225,225,225,15,15,0:50035563	1|1:0,3,0:3:9:1|1:50035563_G_C:126,9,0,126,9,126:50035563	1|1:0,11,0:11:33:1|1:50035563_G_C:484,33,0,484,33,484:50035563	1/2:0,7,3:10:87:.:.:414,113,87,148,0,120:.	1|1:0,10,0:10:30:1|1:50035563_G_C:431,30,0,431,30,431:50035563	1|1:0,7,0:7:21:1|1:50035563_G_C:301,21,0,301,21,301:50035563	1|1:0,3,0:3:9:1|1:50035563_G_C:100,9,0,100,9,100:50035563	1/2:0,7,4:11:99:.:.:418,149,119,137,0,109:.	1|1:0,17,0:17:51:1|1:50035563_G_C:753,51,0,753,51,753:50035563	1|1:0,7,0:7:21:1|1:50035563_G_C:296,21,0,296,21,296:50035563	./.:0,0,0:0:.:.:.:0,0,0,0,0,0:.	./.:0,0,0:0:.:.:.:0,0,0,0,0,0:.	./.:0,0,0:0:.:.:.:0,0,0,0,0,0:.	./.:0,0,0:0:.:.:.:0,0,0,0,0,0:.	./.:0,0,0:0:.:.:.:0,0,0,0,0,0:.	./.:0,0,0:0:.:.:.:0,0,0,0,0,0:.	./.:0,0,0:0:.:.:.:0,0,0,0,0,0:.	1/2:0,12,13:25:99:.:.:1016,478,414,333,0,267:.	./.:0,0,0:0:.:.:.:0,0,0,0,0,0:.	1/2:0,4,5:9:66:.:.:379,192,170,92,0,66:.	1|1:0,4,0:4:12:1|1:50035563_G_C:180,12,0,180,12,180:50035563	1|1:0,26,0:26:78:1|1:50035563_G_C:1159,78,0,1159,78,1159:50035563	1|1:0,25,0:25:75:1|1:50035563_G_C:1098,75,0,1098,75,1098:50035563	1|1:0,22,0:22:66:1|1:50035563_G_C:970,66,0,970,66,970:50035563	0|1:18,24,0:42:99:0|1:50035563_G_C:937,0,684,991,756,1747:50035563	0|2:5,0,9:14:99:0|1:50035563_G_T:300,315,471,0,156,129:50035563	0|1:5,7,0:12:99:0|1:50035563_G_C:279,0,183,294,204,498:50035563	1|1:0,16,0:16:48:1|1:50035563_G_C:664,48,0,664,48,664:50035563	1|1:0,30,0:30:90:1|1:50035563_G_C:1332,90,0,1332,90,1332:50035563	0|1:16,21,0:37:99:0|1:50035563_G_C:726,0,610,774,672,1446:50035563	2|2:0,0,31:31:93:1|1:50035563_G_T:1366,1366,1366,93,93,0:50035563	1|1:0,21,0:21:63:1|1:50035563_G_C:945,63,0,945,63,945:50035563	1/2:0,15,9:24:99:.:.:1003,341,281,317,0,250:.	1/2:0,15,20:35:99:.:.:1483,724,634,360,0,262:.	2|2:0,0,28:28:84:1|1:50035563_G_T:1244,1244,1244,84,84,0:50035563	1|1:0,38,0:38:99:1|1:50035563_G_C:1645,114,0,1645,114,1645:50035563	0/0:23,0,0:23:60:.:.:0,60,803,60,803,803:.	0|1:17,11,0:28:99:0|1:50035563_G_C:233,0,500,284,532,816:50035563	1|1:0,16,0:16:48:1|1:50035563_G_C:709,48,0,709,48,709:50035563	0|1:17,10,0:27:99:0|1:50035563_G_C:192,0,506,242,534,777:50035563	1/2:0,18,20:38:99:.:.:1690,733,630,411,0,296:.	0|1:13,16,0:29:99:0|1:50035563_G_C:598,0,498,637,546,1183:50035563	0|1:11,11,0:22:99:0|1:50035563_G_C:273,0,332,306,364,670:50035563	1|1:0,29,0:29:87:1|1:50035563_G_C:1291,87,0,1291,87,1291:50035563	1/2:0,13,28:41:99:.:.:1646,939,842,221,0,103:.	1/2:0,22,14:36:99:.:.:1438,486,395,456,0,365:.	2|2:0,0,34:34:99:1|1:50035563_G_T:1485,1485,1485,102,102,0:50035563	1/2:0,7,14:21:99:.:.:875,528,483,212,0,155:.	1/2:0,10,14:24:99:.:.:990,522,461,261,0,198:.	2|2:0,0,41:41:99:1|1:50035563_G_T:1827,1827,1827,123,123,0:50035563	2|2:0,0,37:37:99:1|1:50035563_G_T:1655,1655,1655,111,111,0:50035563	2|2:0,0,43:43:99:1|1:50035563_G_T:1889,1889,1889,129,129,0:50035563	1/2:0,15,23:38:99:.:.:1597,844,744,347,0,248:.	1/2:0,13,12:25:99:.:.:1090,441,375,301,0,229:.	1|1:0,36,0:36:99:1|1:50035563_G_C:1565,108,0,1565,108,1565:50035563	1/2:0,18,13:31:99:.:.:1305,491,411,488,0,406:.	1/2:0,18,11:29:99:.:.:1189,420,344,512,0,447:.	1/2:0,12,16:28:99:.:.:1144,613,546,229,0,152:.	1/2:0,19,16:35:99:.:.:1456,592,507,516,0,420:.	2|2:0,0,33:33:99:1|1:50035563_G_T:1478,1478,1478,99,99,0:50035563	1/2:0,14,13:27:99:.:.:1174,498,426,280,0,200:.	1/2:0,15,10:25:99:.:.:1090,362,304,287,0,208:.	1|1:0,18,0:18:54:1|1:50035563_G_C:801,54,0,801,54,801:50035563	1/2:0,7,8:15:99:.:.:631,299,260,172,0,129:.	1/2:0,12,9:21:99:.:.:921,341,282,303,0,241:.	1/2:0,10,11:21:99:.:.:865,420,372,175,0,118:.	1/2:0,11,7:18:99:.:.:786,265,218,189,0,134:.	2|2:0,0,24:24:72:1|1:50035563_G_T:1073,1073,1073,72,72,0:50035563	1/2:0,15,13:28:99:.:.:1171,473,398,277,0,195:.	1/2:0,11,6:17:99:.:.:716,225,179,262,0,213:.	1|1:0,21,0:21:63:1|1:50035563_G_C:907,63,0,907,63,907:50035563	1/2:0,12,15:27:99:.:.:1129,567,504,304,0,227:.	1/2:0,8,6:14:99:.:.:627,224,184,193,0,152:.	1|1:0,16,0:16:48:1|1:50035563_G_C:694,48,0,694,48,694:50035563	1/2:0,12,8:20:99:.:.:861,301,249,293,0,236:.	1/2:0,15,10:26:99:.:.:1072,367,300,309,0,239:.	1|1:0,24,0:24:72:1|1:50035563_G_C:1069,72,0,1069,72,1069:50035563	1|1:0,26,0:26:78:1|1:50035563_G_C:1127,78,0,1127,78,1127:50035563	1/2:0,9,10:19:75:.:.:781,381,333,128,0,75:.	1|1:0,40,0:40:99:1|1:50035563_G_C:1763,120,0,1763,120,1763:50035563	0|1:16,12,0:28:99:0|1:50035563_G_C:255,0,491,303,525,828:50035563	1/2:0,19,21:40:99:.:.:1629,750,653,515,0,412:.	1|1:0,32,0:32:96:1|1:50035563_G_C:1440,96,0,1440,96,1440:50035563	0|1:11,13,0:24:99:0|1:50035563_G_C:281,0,316,314,353,667:50035563	1/2:0,9,12:21:99:.:.:901,423,368,197,0,134:.	0|2:15,0,24:39:99:0|1:50035563_G_T:942,987,1617,0,630,558:50035563	0|2:18,0,22:40:99:0|1:50035563_G_T:870,924,1636,0,712,646:50035563	0|1:15,19,0:34:99:0|1:50035563_G_C:400,0,417,445,471,916:50035563	1/2:0,12,15:27:99:.:.:1152,543,474,342,0,265:.	1/2:0,14,13:27:99:.:.:1164,484,414,334,0,255:.	0|1:11,15,0:26:99:0|1:50035563_G_C:257,0,288,290,329,619:50035563	1/2:0,11,20:31:99:.:.:1267,702,633,217,0,129:.	0|2:8,0,11:19:99:0|1:50035563_G_T:351,375,645,0,270,237:50035563	1|1:0,17,0:17:51:1|1:50035563_G_C:765,51,0,765,51,765:50035563	2|2:0,0,40:40:99:1|1:50035563_G_T:1765,1765,1765,120,120,0:50035563	1/2:0,5,16:21:99:.:.:882,606,558,182,0,123:.	1|1:0,17,0:17:51:1|1:50035563_G_C:747,51,0,747,51,747:50035563	1/2:0,9,11:20:99:.:.:816,411,368,225,0,173:.	1|1:0,32,0:32:96:1|1:50035563_G_C:1436,96,0,1436,96,1436:50035563	0|2:18,0,21:39:99:0|1:50035563_G_T:828,882,1606,0,725,661:50035563	1/2:0,14,6:20:99:.:.:869,197,137,347,0,290:.	1/2:0,7,5:12:99:.:.:506,188,156,149,0,115:.	2|2:0,0,37:37:99:1|1:50035563_G_T:1629,1629,1629,111,111,0:50035563	2|2:0,0,22:22:66:1|1:50035563_G_T:972,972,972,66,66,0:50035563	1/2:0,13,17:30:99:.:.:1242,640,565,298,0,215:.	1|1:0,35,0:35:99:1|1:50035563_G_C:1575,105,0,1575,105,1575:50035563	2|2:0,0,34:34:99:1|1:50035563_G_T:1506,1506,1506,102,102,0:50035563	1|1:0,19,0:19:57:1|1:50035563_G_C:801,57,0,801,57,801:50035563	1/2:0,10,13:23:99:.:.:924,481,422,173,0,111:.	1/2:0,15,16:31:99:.:.:1310,565,482,436,0,349:.	1/2:0,18,16:34:99:.:.:1523,612,515,396,0,293:.	1/2:0,17,17:34:99:.:.:1460,632,539,361,0,261:.	1/2:0,9,16:25:58:.:.:1030,604,545,129,0,58:.	2|2:0,0,27:27:81:1|1:50035563_G_T:1174,1174,1174,81,81,0:50035563	1/2:0,3,2:5:61:.:.:210,74,61,85,0,71:.	1|1:0,37,0:37:99:1|1:50035563_G_C:1553,111,0,1553,111,1553:50035563	1/2:0,20,17:37:99:.:.:1594,622,523,503,0,397:.	1|1:0,38,0:38:99:1|1:50035563_G_C:1656,114,0,1656,114,1656:50035563	1/2:0,18,22:40:99:.:.:1671,830,730,398,0,283:.	1/2:0,12,21:33:99:.:.:1413,776,693,316,0,221:.	1/2:0,17,16:33:99:.:.:1422,618,533,367,0,275:.	1/2:0,16,15:31:99:.:.:1275,583,512,344,0,257:.	1|1:0,33,0:33:99:1|1:50035563_G_C:1443,99,0,1443,99,1443:50035563	1/2:0,7,18:25:93:.:.:1031,631,569,166,0,93:.	1/2:0,22,10:32:99:.:.:1395,400,310,510,0,425:.	2|2:0,0,30:30:90:1|1:50035563_G_T:1341,1341,1341,90,90,0:50035563	0|2:7,0,15:22:99:0|1:50035563_G_T:578,599,893,0,294,249:50035563	0|2:8,0,11:19:99:0|1:50035563_G_T:419,443,779,0,336,303:50035563	2|2:0,0,18:18:54:1|1:50035563_G_T:793,793,793,54,54,0:50035563	1|1:0,26,0:26:78:1|1:50035563_G_C:1150,78,0,1150,78,1150:50035563	1/2:0,6,7:13:99:.:.:511,265,233,152,0,118:.	1|1:0,23,0:23:69:1|1:50035563_G_C:1026,69,0,1026,69,1026:50035563	1|1:0,34,0:34:99:1|1:50035563_G_C:1506,102,0,1506,102,1506:50035563	1|1:0,34,0:34:99:1|1:50035563_G_C:1491,102,0,1491,102,1491:50035563	1/2:0,16,23:39:99:.:.:1644,835,731,296,0,182:.	2|2:0,0,34:34:99:1|1:50035563_G_T:1510,1510,1510,102,102,0:50035563	2|2:0,0,26:26:78:1|1:50035563_G_T:1161,1161,1161,78,78,0:50035563
+chr17	55486421	rs9908046	C	T	43089.8	PASS	.	GT:AD:DP:GQ:PL	0/0:20,0:20:60:0,60,673	1/1:0,17:17:51:634,51,0	0/1:13,12:25:99:404,0,395	0/0:16,0:16:48:0,48,525	0/0:12,0:12:36:0,36,397	0/0:21,0:21:60:0,60,689	0/0:18,0:18:54:0,54,605	0/0:19,0:19:54:0,54,810	0/0:27,0:27:75:0,75,1125	0/0:21,0:21:60:0,60,838	0/0:20,0:20:40:0,40,626	0/1:6,13:20:99:408,0,155	0/1:16,9:26:99:252,0,442	0/1:12,4:16:99:105,0,338	0/0:17,0:17:42:0,42,630	0/1:4,7:11:91:232,0,91	0/0:13,0:13:39:0,39,513	0/1:3,7:10:72:200,0,72	1/1:0,15:15:45:555,45,0	1/1:0,9:9:27:327,27,0	0/0:7,0:7:21:0,21,228	0/1:1,3:5:20:77,0,20	0/1:3,2:5:32:32,0,86	0/1:3,3:6:87:100,0,87	0/0:14,0:14:39:0,39,585	0/1:11,6:17:99:178,0,341	0/1:6,5:11:99:160,0,152	1/1:0,5:6:15:190,15,0	0/0:9,0:9:27:0,27,302	0/0:8,0:8:24:0,24,266	0/1:12,3:15:75:75,0,370	0/1:3,6:9:51:195,0,51	1/1:0,17:17:51:637,51,0	1/1:0,13:13:39:484,39,0	0/1:4,8:12:94:256,0,94	0/0:8,0:8:0:0,0,212	1/1:0,9:9:27:361,27,0	0/1:9,11:20:99:330,0,237	0/0:20,0:20:54:0,54,810	1/1:0,16:17:48:580,48,0	0/0:18,0:18:54:0,54,599	0/0:18,0:18:16:0,16,502	0/0:15,0:15:39:0,39,585	1/1:0,14:14:42:526,42,0	0/1:11,11:22:99:347,0,314	1/1:0,21:21:63:800,63,0	1/1:0,22:22:66:846,66,0	1/1:0,13:13:39:499,39,0	0/1:10,9:19:99:272,0,249	0/1:18,8:26:99:215,0,436	1/1:0,15:15:45:542,45,0	0/0:19,0:19:51:0,51,765	1/1:0,21:21:63:763,63,0	1/1:0,21:21:62:713,62,0	0/0:23,0:23:60:0,60,900	0/1:9,5:14:99:151,0,271	0/0:9,0:9:27:0,27,280	0/1:7,5:12:99:156,0,207	0/0:21,0:21:60:0,60,668	0/1:7,4:11:99:122,0,205	0/0:10,0:10:30:0,30,356	0/0:10,0:10:30:0,30,312	0/0:7,0:7:21:0,21,223	0/0:9,0:9:0:0,0,163	0/1:3,4:7:65:102,0,65	1/1:0,17:17:51:595,51,0	0/1:15,10:25:99:279,0,451	0/0:13,0:13:39:0,39,417	0/1:8,14:22:99:419,0,204	0/0:24,0:24:72:0,72,814	0/0:21,0:21:60:0,60,900	0/0:19,0:19:43:0,43,571	0/0:33,0:33:99:0,99,1033	0/1:7,8:15:99:255,0,194	0/0:11,0:11:33:0,33,342	0/1:8,8:16:99:251,0,199	1/1:0,22:22:66:771,66,0	0/0:21,0:21:60:0,60,705	0/1:9,14:23:99:484,0,247	0/0:13,0:13:0:0,0,403	0/1:10,8:18:99:208,0,292	0/0:7,0:7:18:0,18,270	0/1:7,14:21:99:504,0,194	0/0:12,0:12:36:0,36,402	1/1:0,19:19:56:686,56,0	0/0:4,0:4:12:0,12,132	0/0:5,0:5:15:0,15,164	0/0:8,0:8:21:0,21,315	0/0:5,0:5:15:0,15,165	0/0:9,0:9:27:0,27,282	0/0:3,0:3:6:0,6,90	0/0:3,0:3:9:0,9,96	0/0:21,0:21:54:0,54,810	0/1:17,10:27:99:320,0,517	0/0:3,0:3:9:0,9,92	0/0:3,0:3:9:0,9,75	./.:2,0:2:.:0,0,0	0/1:7,3:10:88:88,0,225	0/1:9,5:14:99:149,0,278	0/1:7,5:12:99:151,0,198	0/0:5,0:5:15:0,15,159	./.:1,0:1:.:0,0,0	0/0:8,0:8:21:0,21,315	0/0:1,0:1:3:0,3,14	0/0:5,0:5:12:0,12,180	0/1:9,4:13:99:113,0,264	0/0:22,0:22:63:0,63,741	0/0:6,0:6:18:0,18,207	0/0:1,0:1:3:0,3,30	0/0:3,0:3:9:0,9,99	0/1:5,3:8:92:92,0,124	0/0:4,0:4:12:0,12,145	0/1:3,5:8:81:143,0,81	0/0:12,0:12:36:0,36,363	0/0:12,0:12:36:0,36,385	0/0:9,0:9:27:0,27,334	0/0:6,0:6:15:0,15,225	0/0:6,0:6:18:0,18,179	0/0:8,0:8:18:0,18,270	0/0:9,0:9:24:0,24,360	0/0:7,0:7:21:0,21,232	./.:0,0:0:.:0,0,0	0/1:1,2:3:27:68,0,27	0/0:3,0:3:9:0,9,95	0/0:7,0:7:21:0,21,207	0/0:6,0:6:18:0,18,176	./.:2,0:2:.:0,0,0	0/0:1,0:1:3:0,3,15	0/1:9,10:19:99:334,0,253	./.:0,0:0:.:0,0,0	0/1:4,4:8:99:133,0,113	0/1:1,2:3:28:69,0,28	0/1:17,15:32:99:488,0,458	0/0:19,0:19:57:0,57,633	0/1:13,12:25:99:376,0,338	0/1:19,20:39:99:615,0,560	0/0:12,0:12:36:0,36,458	0/1:10,5:15:99:154,0,320	0/1:8,18:26:99:480,0,182	0/0:24,0:24:72:0,72,914	0/0:20,0:20:54:0,54,810	0/0:21,0:21:60:0,60,900	0/0:20,0:20:60:0,60,672	1/1:0,30:30:90:1072,90,0	0/1:8,10:18:99:301,0,239	0/0:24,0:24:66:0,66,990	0/1:21,17:38:99:537,0,576	0/0:18,0:18:51:0,51,765	0/0:20,0:20:60:0,60,680	1/1:0,16:16:48:585,48,0	0/0:21,0:21:54:0,54,810	0/1:17,12:29:99:381,0,511	0/1:13,8:22:99:208,0,407	0/0:22,0:22:60:0,60,772	0/0:26,0:26:72:0,72,1080	0/1:11,19:30:99:641,0,283	0/1:17,10:27:99:277,0,506	0/1:10,14:24:99:457,0,278	0/0:22,0:22:63:0,63,807	0/0:25,0:25:72:0,72,1080	0/1:10,12:23:99:349,0,289	0/0:27,0:27:81:0,81,933	0/0:28,0:28:72:0,72,1080	0/1:14,20:34:99:639,0,399	0/0:25,0:25:72:0,72,1080	0/0:34,0:34:91:0,91,1062	0/0:30,0:30:81:0,81,1215	0/0:30,0:30:90:0,90,1104	0/1:16,10:26:99:287,0,509	0/0:26,0:26:72:0,72,1080	0/1:16,18:34:99:588,0,485	0/1:10,5:15:99:142,0,304	1/1:0,20:20:59:699,59,0	0/0:27,0:27:75:0,75,1125	0/0:11,0:11:33:0,33,367	0/0:20,0:20:57:0,57,855	0/0:20,0:20:57:0,57,855	0/1:12,8:20:99:214,0,351	0/1:15,8:23:99:246,0,437	0/0:22,0:22:60:0,60,752	0/0:16,0:16:45:0,45,675	0/1:10,7:17:99:142,0,308	0/0:13,0:13:39:0,39,447	1/1:0,9:9:27:360,27,0	0/0:18,0:18:51:0,51,765	0/1:14,13:27:99:379,0,400	0/0:19,0:19:57:0,57,637	1/1:0,28:28:84:1079,84,0	0/1:20,18:38:99:585,0,579	0/0:22,0:22:28:0,28,706	0/0:19,0:19:57:0,57,677	1/1:0,23:23:69:851,69,0	0/1:22,13:35:99:418,0,653	0/0:18,0:18:54:0,54,612	0/0:29,0:29:81:0,81,1215	0/0:25,0:25:72:0,72,938	0/1:24,16:40:99:426,0,732	0/1:6,19:25:99:620,0,146	0/1:10,16:26:99:530,0,297	0/1:11,15:26:99:476,0,309	0/1:17,11:28:99:349,0,519	0/0:30,0:30:90:0,90,1142	0/0:24,0:24:72:0,72,863	0/0:27,0:27:81:0,81,917	0/1:17,10:27:99:292,0,502	0/0:35,0:35:99:0,99,1485	0/0:16,0:16:48:0,48,536	0/1:10,12:22:99:360,0,280	0/0:23,0:23:57:0,57,855	0/0:27,0:27:72:0,72,1080	0/0:28,0:28:78:0,78,1170	0/0:17,0:17:45:0,45,675	0/1:14,10:24:99:289,0,409	0/0:35,0:35:72:0,72,1171	0/0:25,0:25:65:0,65,825	0/0:29,0:29:87:0,87,1147	0/1:12,11:23:99:344,0,355	0/0:25,0:25:72:0,72,897	0/1:11,13:24:99:394,0,285	0/0:34,0:34:90:0,90,1350	0/0:20,0:20:54:0,54,810	0/1:17,12:29:99:367,0,466	0/1:10,14:24:99:418,0,290	0/0:22,0:22:63:0,63,836	0/1:15,18:33:99:572,0,414	0/0:6,0:6:18:0,18,207	0/1:21,18:39:99:548,0,580	0/0:29,0:29:81:0,81,1215	0/0:30,0:30:90:0,90,1066	0/0:19,0:19:54:0,54,810	1/1:0,33:33:99:1332,99,0	0/1:19,19:38:99:613,0,558	0/1:12,22:34:99:775,0,308	0/0:30,0:30:81:0,81,1215	0/1:17,29:46:99:902,0,454	0/0:24,0:24:72:0,72,941	0/1:23,14:37:99:337,0,713	0/0:19,0:19:54:0,54,810	0/0:13,0:13:36:0,36,540	1/1:0,14:14:42:512,42,0	0/0:18,0:18:54:0,54,571	0/0:20,0:20:57:0,57,855	0/0:17,0:17:51:0,51,587	0/1:10,13:23:99:429,0,291	0/0:25,0:25:72:0,72,912	0/0:20,0:20:60:0,60,774	0/0:21,0:21:48:0,48,687	0/0:22,0:22:63:0,63,794
+chr17	60563757	rs1197062	T	G	7039.04	PASS	.	GT:AD:DP:GQ:PL	0/0:17,0:17:48:0,48,720	0/1:8,8:16:99:184,0,266	0/1:9,6:15:99:156,0,281	0/0:16,0:16:48:0,48,545	0/0:24,0:24:72:0,72,786	0/0:23,0:23:60:0,60,783	0/0:24,0:24:72:0,72,892	0/0:20,0:20:60:0,60,623	0/0:20,0:20:60:0,60,680	0/0:17,0:17:45:0,45,675	0/0:9,0:9:27:0,27,313	0/0:21,0:21:60:0,60,820	0/0:27,0:27:81:0,81,1010	0/0:19,0:19:57:0,57,701	0/0:14,0:14:42:0,42,441	0/0:24,0:24:72:0,72,737	0/0:2,0:2:6:0,6,67	0/1:7,7:14:99:172,0,205	0/0:10,0:10:30:0,30,331	0/0:6,0:6:18:0,18,191	0/1:4,8:12:99:227,0,119	0/0:12,0:12:33:0,33,495	0/0:17,0:17:51:0,51,539	0/0:4,0:4:12:0,12,130	0/0:17,0:17:51:0,51,615	0/0:13,0:13:39:0,39,452	0/0:12,0:12:33:0,33,495	0/0:10,0:10:30:0,30,370	0/0:4,0:4:12:0,12,125	0/0:17,0:17:48:0,48,720	0/0:16,0:16:48:0,48,542	0/0:14,0:14:42:0,42,494	0/0:14,0:14:42:0,42,485	0/0:6,0:6:18:0,18,193	0/0:12,0:12:33:0,33,495	0/0:4,0:4:12:0,12,133	0/0:13,0:13:39:0,39,387	0/0:14,0:14:42:0,42,497	0/0:22,0:22:60:0,60,802	0/0:28,0:28:78:0,78,1170	0/0:19,0:19:51:0,51,765	0/0:26,0:26:75:0,75,973	0/0:15,0:15:45:0,45,501	0/0:17,0:17:51:0,51,625	0/0:10,0:10:27:0,27,405	0/0:20,0:20:60:0,60,676	0/0:20,0:20:60:0,60,724	0/0:21,0:21:60:0,60,732	0/0:21,0:21:57:0,57,855	0/0:14,0:14:42:0,42,470	0/0:22,0:22:57:0,57,855	0/0:17,0:17:51:0,51,533	0/0:18,0:18:51:0,51,765	0/0:23,0:23:63:0,63,945	0/0:28,0:28:81:0,81,961	0/0:25,0:25:75:0,75,823	0/0:9,0:9:27:0,27,297	0/0:10,0:10:30:0,30,330	0/0:12,0:12:36:0,36,367	0/0:13,0:13:36:0,36,540	0/0:19,0:19:54:0,54,810	0/0:16,0:16:39:0,39,585	0/0:11,0:11:30:0,30,450	0/0:8,0:8:21:0,21,315	0/0:9,0:9:27:0,27,316	0/0:14,0:14:42:0,42,468	0/0:17,0:17:45:0,45,675	0/0:24,0:24:56:0,56,793	0/0:17,0:17:51:0,51,590	0/0:21,0:21:60:0,60,708	0/0:20,0:20:60:0,60,646	0/0:19,0:19:54:0,54,810	0/0:21,0:21:60:0,60,724	0/0:19,0:19:43:0,43,628	0/0:14,0:14:39:0,39,585	0/0:25,0:25:70:0,70,824	0/0:25,0:25:72:0,72,782	0/0:21,0:21:57:0,57,855	0/0:21,0:21:54:0,54,810	0/0:21,0:21:60:0,60,900	0/0:11,0:11:33:0,33,389	0/0:12,0:12:33:0,33,495	0/0:16,0:16:42:0,42,630	0/0:21,0:21:60:0,60,696	0/0:25,0:25:72:0,72,867	0/0:8,0:8:24:0,24,263	0/0:13,0:13:33:0,33,495	0/0:7,0:7:21:0,21,215	0/0:11,0:11:33:0,33,374	0/0:10,0:10:30:0,30,369	0/0:8,0:8:24:0,24,261	0/0:3,0:3:9:0,9,92	0/0:17,0:17:51:0,51,623	0/0:20,0:20:60:0,60,703	./.:0,0:0:.:0,0,0	0/0:4,0:4:12:0,12,121	0/0:6,0:6:15:0,15,225	0/0:6,0:6:18:0,18,207	0/0:21,0:21:57:0,57,855	0/0:13,0:13:28:0,28,419	0/0:5,0:5:15:0,15,154	0/0:7,0:7:21:0,21,228	0/0:6,0:6:18:0,18,186	0/0:3,0:3:9:0,9,91	0/0:6,0:6:18:0,18,201	0/0:10,0:10:30:0,30,294	0/0:24,0:24:72:0,72,808	0/0:7,0:7:21:0,21,218	0/0:2,0:2:6:0,6,53	0/0:1,0:1:3:0,3,18	0/0:7,0:7:21:0,21,238	0/0:2,0:2:6:0,6,68	0/1:3,4:7:92:114,0,92	0/0:5,0:5:15:0,15,193	0/0:12,0:12:33:0,33,495	0/0:12,0:12:36:0,36,391	0/0:12,0:12:36:0,36,390	0/0:14,0:14:42:0,42,502	0/1:10,3:13:64:64,0,295	0/0:5,0:5:15:0,15,166	0/0:4,0:4:0:0,0,87	0/0:4,0:4:12:0,12,130	0/0:10,0:10:30:0,30,314	0/0:2,0:2:6:0,6,64	0/0:9,0:9:27:0,27,300	0/0:7,0:7:21:0,21,209	0/0:5,0:5:15:0,15,141	0/0:1,0:1:3:0,3,31	0/0:17,0:17:51:0,51,559	0/0:2,0:2:6:0,6,62	0/0:10,0:10:30:0,30,336	0/0:6,0:6:18:0,18,200	0/0:31,0:31:90:0,90,1117	0/0:24,0:24:72:0,72,826	0/0:26,0:26:75:0,75,1125	0/0:36,0:36:99:0,99,1462	0/0:26,0:26:75:0,75,871	0/0:18,0:18:48:0,48,720	0/1:10,10:20:99:278,0,307	0/0:33,0:33:99:0,99,1293	0/0:26,0:26:75:0,75,1125	0/0:34,0:34:99:0,99,1248	0/0:28,0:28:81:0,81,896	0/0:20,0:20:60:0,60,670	0/0:19,0:19:51:0,51,765	0/0:30,0:30:87:0,87,1305	0/1:13,17:30:99:442,0,416	0/0:21,0:21:60:0,60,688	0/0:25,0:25:72:0,72,1080	0/0:17,0:17:51:0,51,547	0/0:22,0:22:60:0,60,900	0/0:33,0:33:99:0,99,1190	0/0:25,0:25:72:0,72,915	0/0:23,0:23:63:0,63,780	0/0:31,0:31:81:0,81,1215	0/0:34,0:34:99:0,99,1226	0/0:27,0:27:81:0,81,1003	0/0:25,0:25:72:0,72,931	0/0:35,0:35:99:0,102,1530	0/0:33,0:33:99:0,99,1118	0/0:29,0:29:74:0,74,1030	0/0:40,0:40:99:0,103,1280	0/0:34,0:34:99:0,99,1200	0/0:25,0:25:75:0,75,847	0/0:39,0:39:99:0,111,1665	0/0:21,0:21:54:0,54,810	0/0:27,0:27:70:0,70,969	0/0:29,0:29:84:0,84,1034	0/0:26,0:26:75:0,75,1125	0/0:25,0:25:72:0,72,1080	0/0:22,0:22:66:0,66,818	0/0:20,0:20:60:0,60,707	1/1:0,21:21:63:649,63,0	0/1:8,10:18:99:297,0,239	0/1:16,5:21:99:103,0,536	0/1:16,18:34:99:462,0,501	0/0:21,0:21:60:0,60,735	0/0:15,0:15:45:0,45,541	0/0:21,0:21:60:0,60,823	0/0:31,0:31:87:0,87,1305	0/0:24,0:24:60:0,60,837	0/0:25,0:25:75:0,75,953	0/0:20,0:20:60:0,60,731	0/0:10,0:10:30:0,30,326	0/0:23,0:23:66:0,66,990	0/0:25,0:25:39:0,39,857	0/0:34,0:34:90:0,90,1350	0/0:28,0:28:81:0,81,1215	0/0:26,0:26:72:0,72,1080	0/0:34,0:34:99:0,99,1268	0/0:22,0:22:66:0,66,820	0/0:34,0:34:90:0,90,1350	0/0:35,0:35:99:0,99,1485	0/0:33,0:33:96:0,96,1440	0/0:31,0:31:90:0,90,1074	0/0:34,0:34:99:0,99,1255	0/0:22,0:22:63:0,63,801	0/0:26,0:26:75:0,75,984	0/0:23,0:23:66:0,66,819	0/0:33,0:33:71:0,71,1190	0/0:33,0:33:90:0,90,1350	0/0:20,0:20:60:0,60,689	0/0:24,0:24:72:0,72,836	0/0:34,0:34:99:0,99,1133	0/0:22,0:22:51:0,51,770	0/0:31,0:31:81:0,81,1098	0/0:22,0:22:63:0,63,945	0/0:17,0:17:45:0,45,675	0/0:5,0:5:15:0,15,170	0/0:25,0:25:72:0,72,970	0/0:32,0:32:90:0,90,1122	0/0:14,0:14:42:0,42,471	0/1:7,13:20:99:352,0,187	0/0:33,0:33:87:0,87,1305	0/0:26,0:26:72:0,72,1080	0/0:20,0:20:60:0,60,736	0/0:30,0:30:90:0,90,1036	0/0:24,0:24:72:0,72,876	0/0:34,0:34:99:0,102,1230	0/0:24,0:24:66:0,66,990	0/0:26,0:26:78:0,78,913	0/0:30,0:30:90:0,90,1008	0/1:20,21:41:99:611,0,660	0/0:18,0:18:54:0,54,681	0/1:11,12:23:99:291,0,357	0/0:10,0:10:30:0,30,353	0/0:32,0:32:93:0,93,1166	0/1:20,7:27:99:155,0,642	1/1:0,34:34:99:1199,102,0	0/0:32,0:32:93:0,93,1395	0/0:32,0:32:90:0,90,1141	0/1:13,13:26:99:364,0,431	0/1:18,23:41:99:687,0,551	0/1:13,17:30:99:469,0,401	0/0:31,0:31:87:0,87,1305	0/0:33,0:33:99:0,99,1175	0/0:30,0:30:81:0,81,1215	0/0:19,0:19:57:0,57,642	0/0:11,0:11:33:0,33,393	0/0:16,0:16:48:0,48,529	0/0:8,0:8:24:0,24,248	0/0:24,0:24:66:0,66,990	0/0:17,0:17:51:0,51,656	0/0:20,0:20:60:0,60,695	0/0:34,0:34:96:0,96,1440	0/0:22,0:22:63:0,63,809	0/0:23,0:23:63:0,63,945	0/0:20,0:20:60:0,60,680
